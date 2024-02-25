@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://drjrd0ruubrg5"]
+
+[ext_resource type="Texture2D" uid="uid://8ntoo5o3521g" path="res://Aquarium Basic Sprites.png" id="1_xw225"]
+[ext_resource type="Script" path="res://SimpleFish.gd" id="2_08rk6"]
+[ext_resource type="Script" path="res://SimpleFish1.gd" id="2_swx4m"]
+
+[node name="Tank" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Tank" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_xw225")
+region_enabled = true
+region_rect = Rect2(218, 39, 812, 510)
+
+[node name="Contents" type="Node2D" parent="."]
+
+[node name="Animals" type="Node2D" parent="Contents"]
+
+[node name="SimpleFish" type="Node2D" parent="Contents/Animals"]
+script = ExtResource("2_08rk6")
+
+[node name="SimpleFish1" type="Sprite2D" parent="Contents/Animals/SimpleFish"]
+position = Vector2(-212, -116)
+texture = ExtResource("1_xw225")
+region_enabled = true
+region_rect = Rect2(34.7247, 168.543, 145.934, 58.5548)
+script = ExtResource("2_swx4m")
+
+[node name="Plants" type="Node2D" parent="Contents"]
+
+[node name="SimpleGrass" type="Node2D" parent="Contents/Plants"]
+
+[node name="SimpleGrass1" type="Sprite2D" parent="Contents/Plants/SimpleGrass"]
+position = Vector2(-232, 134)
+texture = ExtResource("1_xw225")
+region_enabled = true
+region_rect = Rect2(86.9008, 294.468, 77.9522, 78.6773)
+
+[node name="SimpleGrass2" type="Sprite2D" parent="Contents/Plants/SimpleGrass"]
+position = Vector2(3, 134)
+texture = ExtResource("1_xw225")
+region_enabled = true
+region_rect = Rect2(86.9008, 294.468, 77.9522, 78.6773)
+
+[node name="SimpleGrass3" type="Sprite2D" parent="Contents/Plants/SimpleGrass"]
+position = Vector2(208, 138)
+texture = ExtResource("1_xw225")
+region_enabled = true
+region_rect = Rect2(86.9008, 294.468, 77.9522, 78.6773)

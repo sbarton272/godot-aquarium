@@ -48,3 +48,7 @@ func place_kelp():
 	all_plants.add_child(new_kelp)
 	
 	#globals.fish_count += 1
+	
+
+func _on_spectate_entered():
+	print("Oxygen", globals.oxygen)

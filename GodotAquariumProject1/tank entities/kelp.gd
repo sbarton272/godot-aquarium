@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Kelp
 
+const OXYGEN_CHANGE = 1
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var mover: Mover = $Mover
 
@@ -24,6 +26,7 @@ func _on_tank_setup_entered():
 	mover.hoverable = true
 
 func _on_tank_spectate_entered():
+	globals.oxygen += OXYGEN_CHANGE
 	mover.hoverable = false
 	
 func _on_tank_result_entered():

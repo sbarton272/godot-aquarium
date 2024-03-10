@@ -114,5 +114,6 @@ script = ExtResource("3_ata3w")
 [connection signal="result_entered" from="." to="UI/TankStateLabel" method="_on_tank_result_entered"]
 [connection signal="setup_entered" from="." to="UI/Desk" method="_on_tank_setup_entered"]
 [connection signal="setup_entered" from="." to="UI/TankStateLabel" method="_on_tank_setup_entered"]
+[connection signal="spectate_entered" from="." to="." method="_on_spectate_entered"]
 [connection signal="spectate_entered" from="." to="Spectators" method="_on_tank_spectate_entered"]
 [connection signal="spectate_entered" from="." to="UI/TankStateLabel" method="_on_tank_spectate_entered"]

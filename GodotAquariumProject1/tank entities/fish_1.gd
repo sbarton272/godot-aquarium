@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Fish
 
+const OXYGEN_CHANGE = -1
+
 var max_x: float
 var min_x: float
 var max_y: float
@@ -80,6 +82,7 @@ func _on_tank_setup_entered():
 	mover.hoverable = true
 
 func _on_tank_spectate_entered():
+	globals.oxygen += OXYGEN_CHANGE
 	mover.hoverable = false
 	set_new_path()
 	set_random_speed()
@@ -92,7 +95,7 @@ func _on_tank_result_entered():
 func _on_eating_radius_area_entered(area):
 
 	var colliding_fish = area.get_parent() as Fish
-	print("collision:", area, " other: ", colliding_fish.strength, " us: ", strength)
+	#print("collision:", area, " other: ", colliding_fish.strength, " us: ", strength)
 	if colliding_fish.strength > strength:
 		# Die :(
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgvga3qi0v7r1"]
+[gd_scene load_steps=6 format=3 uid="uid://dgvga3qi0v7r1"]
 
 [ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://graphics/icon.svg" id="1_hej5y"]
 [ext_resource type="Script" path="res://tank entities/fish_1.gd" id="1_mlvuc"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htq6p"]
 size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uenj"]
+size = Vector2(34, 34)
 
 [node name="Fish1" type="Node2D" groups=["Fish"]]
 script = ExtResource("1_mlvuc")
@@ -21,4 +24,14 @@ parent_sprite = NodePath("../Sprite2D")
 parent_object = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mover"]
+visible = false
 shape = SubResource("RectangleShape2D_htq6p")
+
+[node name="Eating Radius" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eating Radius"]
+shape = SubResource("RectangleShape2D_8uenj")
+
+[connection signal="area_entered" from="Eating Radius" to="." method="_on_eating_radius_area_entered"]

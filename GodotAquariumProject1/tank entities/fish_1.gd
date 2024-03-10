@@ -10,6 +10,7 @@ var min_y: float
 var speed: float
 var progress: float
 var destination: Vector2
+var strength: float
 
 var is_moving: bool = false
 
@@ -31,6 +32,8 @@ func _ready() -> void:
 	set_random_speed()
 	
 	fish_sprite.modulate = Color(1,randf_range(0,1),randf_range(0,1),1)
+	
+	strength = randf_range(0, 1)
 
 func _process(delta: float) -> void:
 	if is_moving:
@@ -84,3 +87,12 @@ func _on_tank_spectate_entered():
 
 func _on_tank_result_entered():
 	is_moving = false
+
+
+func _on_eating_radius_area_entered(area):
+
+	var colliding_fish = area.get_parent() as Fish
+	print("collision:", area, " other: ", colliding_fish.strength, " us: ", strength)
+	if colliding_fish.strength > strength:
+		# Die :(
+		queue_free()

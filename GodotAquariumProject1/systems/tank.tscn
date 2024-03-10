@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://c411m8pela1xr"]
+
+[ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://graphics/icon.svg" id="1_68wol"]
+[ext_resource type="Script" path="res://systems/tank.gd" id="1_xl80q"]
+[ext_resource type="Script" path="res://ui/tankstatelabel.gd" id="3_ata3w"]
+[ext_resource type="Script" path="res://systems/visitors.gd" id="4_2n55v"]
+[ext_resource type="Texture2D" uid="uid://c1883wcrmof7f" path="res://graphics/Desk.png" id="4_ppiee"]
+[ext_resource type="Script" path="res://systems/desk.gd" id="4_rmafo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5bu3g"]
+font_size = 30
+
+[node name="Tank" type="Node2D"]
+script = ExtResource("1_xl80q")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+scale = Vector2(105, 60)
+texture = ExtResource("1_68wol")
+region_enabled = true
+region_rect = Rect2(17.1252, 15.1553, 11.2895, 11.2895)
+
+[node name="TankSprite" type="Sprite2D" parent="."]
+scale = Vector2(70, 37)
+texture = ExtResource("1_68wol")
+region_enabled = true
+region_rect = Rect2(48.169, 34.578, 15, 15)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AllFish" type="Node2D" parent="."]
+
+[node name="AllPlants" type="Node2D" parent="."]
+
+[node name="Spectators" type="Node2D" parent="."]
+script = ExtResource("4_2n55v")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -339.0
+offset_right = 590.0
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Desk" type="Control" parent="UI"]
+visible = false
+layout_mode = 1
+anchor_left = 0.054
+anchor_top = 0.112
+anchor_right = 0.947
+anchor_bottom = 0.909
+offset_left = 128.28
+offset_top = 58.064
+offset_right = -885.46
+offset_bottom = -442.302
+script = ExtResource("4_rmafo")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Desk"]
+layout_mode = 0
+offset_left = -195.0
+offset_top = -133.0
+offset_right = 993.0
+offset_bottom = 552.0
+color = Color(0, 0, 0, 0.435294)
+
+[node name="DeskTextureRect" type="TextureRect" parent="UI/Desk"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 200.0
+scale = Vector2(3, 2)
+texture = ExtResource("4_ppiee")
+
+[node name="DailyVisitorsLabel" type="Label" parent="UI/Desk"]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 76.0
+offset_right = 459.0
+offset_bottom = 99.0
+text = "Daily Visitors: 0"
+
+[node name="TotalVisitorsLabel" type="Label" parent="UI/Desk"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 121.0
+offset_right = 459.0
+offset_bottom = 144.0
+text = "Total Visitors: 0"
+
+[node name="TankStateLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.434
+anchor_top = 0.021
+anchor_right = 0.561
+anchor_bottom = 0.089
+offset_left = 4.88
+offset_top = 1.67802
+offset_right = 1.01996
+offset_bottom = -2.42599
+text = "Setup"
+label_settings = SubResource("LabelSettings_5bu3g")
+horizontal_alignment = 1
+script = ExtResource("3_ata3w")
+
+[connection signal="result_entered" from="." to="Spectators" method="_on_tank_result_entered"]
+[connection signal="result_entered" from="." to="UI/Desk" method="_on_tank_result_entered"]
+[connection signal="result_entered" from="." to="UI/TankStateLabel" method="_on_tank_result_entered"]
+[connection signal="setup_entered" from="." to="UI/Desk" method="_on_tank_setup_entered"]
+[connection signal="setup_entered" from="." to="UI/TankStateLabel" method="_on_tank_setup_entered"]
+[connection signal="spectate_entered" from="." to="Spectators" method="_on_tank_spectate_entered"]
+[connection signal="spectate_entered" from="." to="UI/TankStateLabel" method="_on_tank_spectate_entered"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvwqxbr4mgddn"]
+
+[ext_resource type="Script" path="res://components/mover.gd" id="1_17hfm"]
+
+[node name="Mover" type="Area2D"]
+script = ExtResource("1_17hfm")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

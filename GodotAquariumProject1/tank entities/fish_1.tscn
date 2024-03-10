@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgvga3qi0v7r1"]
+
+[ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://graphics/icon.svg" id="1_hej5y"]
+[ext_resource type="Script" path="res://tank entities/fish_1.gd" id="1_mlvuc"]
+[ext_resource type="PackedScene" uid="uid://dvwqxbr4mgddn" path="res://components/mover.tscn" id="3_2upid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htq6p"]
+size = Vector2(30, 30)
+
+[node name="Fish1" type="Node2D" groups=["Fish"]]
+script = ExtResource("1_mlvuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("1_hej5y")
+region_enabled = true
+region_rect = Rect2(62.323, 65.594, 3, 3)
+
+[node name="Mover" parent="." node_paths=PackedStringArray("parent_sprite", "parent_object") instance=ExtResource("3_2upid")]
+parent_sprite = NodePath("../Sprite2D")
+parent_object = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover"]
+shape = SubResource("RectangleShape2D_htq6p")

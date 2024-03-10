@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgvga3qi0v7r1"]
+
+[ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://icon.svg" id="1_hej5y"]
+[ext_resource type="Script" path="res://fish_1.gd" id="1_mlvuc"]
+
+[node name="Fish1" type="Node2D"]
+script = ExtResource("1_mlvuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_hej5y")
+region_enabled = true
+region_rect = Rect2(82.9436, 63.0256, 4.45931, 4.45931)

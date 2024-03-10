@@ -7,6 +7,7 @@
 [node name="Tank" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.1, 1.1)
 
 [node name="Tank" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)

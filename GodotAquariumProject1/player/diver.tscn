@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyabe5swsd6hx"]
+[gd_scene load_steps=6 format=3 uid="uid://dyabe5swsd6hx"]
 
 [ext_resource type="Script" path="res://player/diver.gd" id="1_cwp8s"]
 [ext_resource type="Texture2D" uid="uid://bbnku1cmppu5b" path="res://graphics/Diver.png" id="1_m0s7y"]
-[ext_resource type="PackedScene" uid="uid://db6jlc3vd0mk3" path="res://components/selectability.tscn" id="3_sng01"]
 
 [sub_resource type="Animation" id="Animation_kqs0c"]
 resource_name = "idle"
@@ -55,5 +54,3 @@ libraries = {
 "": SubResource("AnimationLibrary_gjhg4")
 }
 autoplay = "idle"
-
-[node name="Selectability" parent="." instance=ExtResource("3_sng01")]

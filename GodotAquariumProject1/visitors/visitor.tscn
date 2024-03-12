@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b7xgec5ghsieo"]
 
 [ext_resource type="Texture2D" uid="uid://bp65a3dhpnl0w" path="res://graphics/Spectator.png" id="1_iliqo"]
-[ext_resource type="Script" path="res://visitor.gd" id="1_k3b68"]
+[ext_resource type="Script" path="res://visitors/visitor.gd" id="1_k3b68"]
 
 [node name="Spectator" type="Node2D"]
 script = ExtResource("1_k3b68")

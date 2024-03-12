@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://nyamc2hb5e6e"]
+[gd_scene load_steps=7 format=3 uid="uid://nyamc2hb5e6e"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_tbqom"]
 [ext_resource type="Shader" uid="uid://dk78ets4l3qi7" path="res://resources/kelp_swayer.tres" id="2_paxuf"]
 [ext_resource type="Texture2D" uid="uid://cl4is2j61po2t" path="res://graphics/kelp.png" id="3_8lg34"]
+[ext_resource type="PackedScene" uid="uid://dyabe5swsd6hx" path="res://player/diver.tscn" id="4_xktgd"]
+[ext_resource type="PackedScene" uid="uid://brrpqdvvbpr2q" path="res://components/selector.tscn" id="5_ytbeb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1obi"]
 shader = ExtResource("2_paxuf")
@@ -12,14 +14,19 @@ shader = ExtResource("2_paxuf")
 [node name="TankBackgroundSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_tbqom")
 
-[node name="Kelp" type="Sprite2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.9, 0.8)
+
+[node name="KelpGroup" type="Node2D" parent="."]
+
+[node name="Kelp" type="Sprite2D" parent="KelpGroup"]
 material = SubResource("ShaderMaterial_n1obi")
 position = Vector2(-313, 68)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_8lg34")
 hframes = 2
 
-[node name="Kelp4" type="Sprite2D" parent="."]
+[node name="Kelp4" type="Sprite2D" parent="KelpGroup"]
 material = SubResource("ShaderMaterial_n1obi")
 position = Vector2(-165, 68)
 scale = Vector2(0.7, 0.7)
@@ -27,7 +34,7 @@ texture = ExtResource("3_8lg34")
 hframes = 2
 frame = 1
 
-[node name="Kelp2" type="Sprite2D" parent="."]
+[node name="Kelp2" type="Sprite2D" parent="KelpGroup"]
 material = SubResource("ShaderMaterial_n1obi")
 position = Vector2(-313, 224)
 scale = Vector2(0.3, 0.3)
@@ -35,7 +42,7 @@ texture = ExtResource("3_8lg34")
 flip_h = true
 hframes = 2
 
-[node name="Kelp3" type="Sprite2D" parent="."]
+[node name="Kelp3" type="Sprite2D" parent="KelpGroup"]
 material = SubResource("ShaderMaterial_n1obi")
 position = Vector2(-433, 224)
 scale = Vector2(0.3, 0.3)
@@ -43,5 +50,8 @@ texture = ExtResource("3_8lg34")
 flip_h = true
 hframes = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.9, 0.8)
+[node name="Diver" parent="." instance=ExtResource("4_xktgd")]
+position = Vector2(243, -205)
+
+[node name="Selector" parent="." node_paths=PackedStringArray("selectable_objects") instance=ExtResource("5_ytbeb")]
+selectable_objects = [NodePath("../Diver")]

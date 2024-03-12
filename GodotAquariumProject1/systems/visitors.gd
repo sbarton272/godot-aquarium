@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var spectator_scene: PackedScene = load("res://visitor.tscn")
+@onready var spectator_scene: PackedScene = load("res://visitors/visitor.tscn")
 
 func _on_tank_spectate_entered() -> void:
 	

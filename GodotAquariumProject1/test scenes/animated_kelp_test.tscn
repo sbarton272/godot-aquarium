@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://nyamc2hb5e6e"]
+[gd_scene load_steps=7 format=3 uid="uid://nyamc2hb5e6e"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_tbqom"]
 [ext_resource type="Shader" uid="uid://dk78ets4l3qi7" path="res://resources/kelp_swayer.tres" id="2_paxuf"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1obi"]
 shader = ExtResource("2_paxuf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfayq"]
+font_size = 30
+font_color = Color(1, 0, 1, 1)
 
 [node name="AnimatedKelpTest" type="Node2D"]
 
@@ -51,3 +55,11 @@ hframes = 2
 
 [node name="Diver" parent="." instance=ExtResource("4_xktgd")]
 position = Vector2(243, -205)
+
+[node name="Directions" type="Label" parent="."]
+offset_left = -133.0
+offset_top = -390.0
+offset_right = 147.0
+offset_bottom = -348.0
+text = "Right click to move!"
+label_settings = SubResource("LabelSettings_gfayq")

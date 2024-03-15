@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://l2nqn8cy78oa"]
+
+[ext_resource type="Texture2D" uid="uid://u8gorlodh8ij" path="res://graphics/spencer_fish_2.png" id="1_jeuiw"]
+[ext_resource type="Script" path="res://fish_movement_component.gd" id="2_qkcx2"]
+
+[node name="Fish" type="Node2D"]
+
+[node name="FishSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_jeuiw")
+
+[node name="FishMovementComponent" type="Node2D" parent="."]
+script = ExtResource("2_qkcx2")

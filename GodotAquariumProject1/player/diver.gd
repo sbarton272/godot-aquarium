@@ -1,5 +1,7 @@
 extends Node2D
 
+signal flashlight_toggle
+
 const KICK_IMPULSE: float = 2
 const WATER_DRAG: float = 0.02
 
@@ -10,6 +12,7 @@ var ghost_sprite: Sprite2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $DiverSprite
+@onready var flashlight_arm: Node2D = $DiverSprite/FlashlightArm
 
 func _ready() -> void:
 	pass
@@ -22,6 +25,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			print("set new destination")
 			target_pos = get_global_mouse_position()
 			set_new_direction(target_pos)
+	
+	if event is InputEventKey:
+		if not event.pressed and event.keycode == KEY_F:
+			print("F pressed")
+			flashlight_toggle.emit()
 
 func _process(delta: float) -> void:
 	
@@ -33,20 +41,20 @@ func _process(delta: float) -> void:
 		#stop the movement if the diver is near their target
 		if position.distance_to(target_pos) < 10:
 			moving = false
-			ghost_sprite.queue_free()
+			#ghost_sprite.queue_free()
 			animation_player.play("idle")
 
 func set_new_direction(destination: Vector2):
 	
 	#create a ghost to indicate target position
-	if ghost_sprite != null:
-		ghost_sprite.queue_free()
-	ghost_sprite = Sprite2D.new()
-	ghost_sprite.texture = sprite.texture
-	ghost_sprite.modulate = Color(1,1,1,0.3)
-	ghost_sprite.position = target_pos
-	ghost_sprite.hframes = 2
-	get_parent().add_child(ghost_sprite)
+	#if ghost_sprite != null:
+		#ghost_sprite.queue_free()
+	#ghost_sprite = Sprite2D.new()
+	#ghost_sprite.texture = sprite.texture
+	#ghost_sprite.modulate = Color(1,1,1,0.3)
+	#ghost_sprite.position = target_pos
+	#ghost_sprite.hframes = 2
+	#get_parent().add_child(ghost_sprite)
 	
 	#orient diver towards the new destination
 	var diver_rotation: float = position.angle_to_point(destination)

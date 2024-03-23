@@ -57,21 +57,22 @@ hframes = 2
 [node name="FishGroup" type="Node2D" parent="."]
 
 [node name="Fish" parent="FishGroup" instance=ExtResource("5_nivnn")]
-position = Vector2(-11, 40)
-
-[node name="Fish2" parent="FishGroup" instance=ExtResource("5_nivnn")]
-position = Vector2(-11, 40)
-
-[node name="Fish3" parent="FishGroup" instance=ExtResource("5_nivnn")]
-position = Vector2(-11, 40)
+position = Vector2(-46, -54)
 
 [node name="Diver" parent="." instance=ExtResource("4_xktgd")]
 position = Vector2(243, -205)
 
-[node name="Directions" type="Label" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.388235, 0.388235, 0.388235, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Directions" type="Label" parent="CanvasLayer"]
 offset_left = -133.0
 offset_top = -390.0
-offset_right = 147.0
-offset_bottom = -348.0
-text = "Right click to move!"
+offset_right = 148.0
+offset_bottom = -303.0
+text = "Right click to move!
+\"F\" to use flashlight"
 label_settings = SubResource("LabelSettings_gfayq")

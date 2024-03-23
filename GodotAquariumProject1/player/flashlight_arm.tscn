@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dswd41jb6wyso"]
+
+[ext_resource type="Texture2D" uid="uid://6uw6bc21s7um" path="res://graphics/diver_arm.png" id="1_544ix"]
+[ext_resource type="Texture2D" uid="uid://bx81xf55i0uhs" path="res://graphics/Light1.png" id="1_kfko0"]
+[ext_resource type="Script" path="res://player/flashlight_arm.gd" id="1_t1kc3"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ky2pc"]
+polygon = PackedVector2Array(-4, 2, 0, 2, 3.2, 1.2, -2, 0, 3.2, -0.800003, 0, -2, -4, -2)
+
+[node name="FlashlightArm" type="Node2D"]
+script = ExtResource("1_t1kc3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(10, 0)
+rotation = -2.82011
+texture = ExtResource("1_544ix")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(26.8, -0.199997)
+occluder = SubResource("OccluderPolygon2D_ky2pc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(25.8, -0.199997)
+enabled = false
+energy = 1.2
+blend_mode = 2
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 2.0
+texture = ExtResource("1_kfko0")
+texture_scale = 2.5

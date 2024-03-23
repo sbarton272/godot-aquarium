@@ -17,6 +17,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if is_moving:
 		move(delta)
+	
+	#keep fish within bounds
+	if parent_object.position.x > globals.x_bound_max:
+		parent_object.position.x = globals.x_bound_max
+		
+	if parent_object.position.x < globals.x_bound_min:
+		parent_object.position.x = globals.x_bound_min
+		
+	if parent_object.position.y > globals.y_bound_max:
+		parent_object.position.y = globals.y_bound_max
+		
+	if parent_object.position.y < globals.y_bound_min:
+		parent_object.position.y = globals.y_bound_min
 
 func move(delta: float):
 	parent_object.position += Vector2.RIGHT.rotated(facing) * speed * delta

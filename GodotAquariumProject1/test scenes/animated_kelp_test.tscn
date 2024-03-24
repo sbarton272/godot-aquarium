@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://nyamc2hb5e6e"]
+[gd_scene load_steps=9 format=3 uid="uid://nyamc2hb5e6e"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_tbqom"]
 [ext_resource type="Shader" uid="uid://dk78ets4l3qi7" path="res://resources/kelp_swayer.tres" id="2_paxuf"]
 [ext_resource type="Texture2D" uid="uid://cl4is2j61po2t" path="res://graphics/kelp.png" id="3_8lg34"]
 [ext_resource type="PackedScene" uid="uid://dyabe5swsd6hx" path="res://player/diver.tscn" id="4_xktgd"]
 [ext_resource type="PackedScene" uid="uid://l2nqn8cy78oa" path="res://fish.tscn" id="5_nivnn"]
+[ext_resource type="AudioStream" uid="uid://bktbu5234fq83" path="res://audio/Underwater_test.mp3" id="6_wa4v3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1obi"]
 shader = ExtResource("2_paxuf")
@@ -76,3 +77,7 @@ offset_bottom = -303.0
 text = "Right click to move!
 \"F\" to use flashlight"
 label_settings = SubResource("LabelSettings_gfayq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_wa4v3")
+autoplay = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l2nqn8cy78oa"]
 
 [ext_resource type="Texture2D" uid="uid://u8gorlodh8ij" path="res://graphics/spencer_fish_2.png" id="1_jeuiw"]
-[ext_resource type="Script" path="res://fish_movement_component.gd" id="2_qkcx2"]
+[ext_resource type="Script" path="res://tank entities/fish_movement_component.gd" id="2_qkcx2"]
 
 [node name="Fish" type="Node2D"]
 

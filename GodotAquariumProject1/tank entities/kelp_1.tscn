@@ -1,22 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://bvmugcqw7thdw"]
 
-[ext_resource type="Script" path="res://tank entities/kelp.gd" id="1_1l1ct"]
-[ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://graphics/icon.svg" id="1_octtw"]
-[ext_resource type="PackedScene" uid="uid://dvwqxbr4mgddn" path="res://components/mover.tscn" id="3_r0h8h"]
+[ext_resource type="Script" path="res://tank entities/kelp_1.gd" id="1_g3onv"]
+[ext_resource type="Texture2D" uid="uid://djwxvhq3hrkv0" path="res://graphics/icon.svg" id="2_slqc1"]
+[ext_resource type="PackedScene" uid="uid://dvwqxbr4mgddn" path="res://components/mover.tscn" id="3_wy6da"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17xa7"]
 size = Vector2(22, 102)
 
 [node name="Kelp" type="Node2D"]
-script = ExtResource("1_1l1ct")
+script = ExtResource("1_g3onv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(20, 100)
-texture = ExtResource("1_octtw")
+texture = ExtResource("2_slqc1")
 region_enabled = true
 region_rect = Rect2(63.215, 69.594, 1, 1)
 
-[node name="Mover" parent="." node_paths=PackedStringArray("parent_sprite", "parent_object") instance=ExtResource("3_r0h8h")]
+[node name="Mover" parent="." node_paths=PackedStringArray("parent_sprite", "parent_object") instance=ExtResource("3_wy6da")]
 parent_sprite = NodePath("../Sprite2D")
 parent_object = NodePath("..")
 

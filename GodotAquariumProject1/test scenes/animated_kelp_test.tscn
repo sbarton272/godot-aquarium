@@ -38,7 +38,7 @@ position = Vector2(-46, -54)
 position = Vector2(243, -205)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true

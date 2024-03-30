@@ -94,6 +94,7 @@ void vertex() {
 
 }
 "
+graph_offset = Vector2(201.901, 114.263)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(640, 160)
@@ -104,7 +105,7 @@ nodes/vertex/3/position = Vector2(360, 140)
 nodes/vertex/4/node = SubResource("VisualShaderNodeIf_rovjb")
 nodes/vertex/4/position = Vector2(180, 280)
 nodes/vertex/5/node = SubResource("VisualShaderNodeInput_x47fe")
-nodes/vertex/5/position = Vector2(-700, 380)
+nodes/vertex/5/position = Vector2(-660, 360)
 nodes/vertex/6/node = SubResource("VisualShaderNodeVectorCompose_ojh2r")
 nodes/vertex/6/position = Vector2(40, 360)
 nodes/vertex/7/node = SubResource("VisualShaderNodeFloatFunc_n70tf")
@@ -114,3 +115,4 @@ nodes/vertex/8/position = Vector2(-140, 340)
 nodes/vertex/9/node = SubResource("VisualShaderNodeFloatOp_2p707")
 nodes/vertex/9/position = Vector2(-440, 320)
 nodes/vertex/connections = PackedInt32Array(3, 0, 0, 0, 4, 0, 3, 1, 2, 0, 3, 0, 2, 2, 4, 0, 6, 0, 4, 5, 7, 0, 8, 0, 8, 0, 6, 0, 5, 0, 9, 0, 9, 0, 7, 0)
+nodes/fragment/0/position = Vector2(400, 160)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://di7hpds0p1ttq"]
+
+[ext_resource type="Texture2D" uid="uid://c28gndwhcv0qg" path="res://art/tank.png" id="1_vep5r"]
+
+[node name="Tank" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Tank" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("1_vep5r")
+centered = false

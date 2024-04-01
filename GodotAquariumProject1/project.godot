@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="FishTank"
-run/main_scene="res://test scenes/animated_kelp_test.tscn"
+run/main_scene="res://DragAndDropTank/drag_and_drop_tank.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://graphics/icon.svg"
 
 [autoload]
 
 globals="*res://systems/globals.gd"
+draganddropglobals="*res://DragAndDropTank/drag_and_drop_globals.gd"
 
 [display]
 

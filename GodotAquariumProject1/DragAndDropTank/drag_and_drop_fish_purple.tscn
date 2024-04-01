@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5oupmlivqrpn"]
+
+[ext_resource type="Texture2D" uid="uid://bijk2b3hdotsk" path="res://graphics/spencer_purple_fish_1.png" id="1_m6gt6"]
+[ext_resource type="Script" path="res://DragAndDropTank/fish_movement_component_2.gd" id="2_2jor5"]
+
+[node name="Fish" type="Node2D"]
+
+[node name="FishSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_m6gt6")
+
+[node name="FishMovementComponent" type="Node2D" parent="."]
+script = ExtResource("2_2jor5")

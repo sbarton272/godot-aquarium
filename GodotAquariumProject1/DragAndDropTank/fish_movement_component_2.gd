@@ -2,10 +2,21 @@ extends Node2D
 
 @export var parent_object: Node2D
 
-var speed: float = 100
+@export var speed: float = 100
+@export var border_check_distance: float = 100
+@export var neighbor_separation_weight: float = 1
+@export var neighbor_alignment_weight: float = 10
+@export var obstacle_avoidance_weight: float = 5
+
 var velocity: Vector2
 
 @onready var neighbor_detector: Area2D = $NeighborDetector
+
+#grab tank bounds, with some extra margin
+@onready var max_x: float = draganddropglobals.max_x - 20
+@onready var min_x: float = draganddropglobals.min_x + 20
+@onready var max_y: float = draganddropglobals.max_y - 20
+@onready var min_y: float = draganddropglobals.min_y + 20
 
 func _ready():
 	velocity = Vector2.RIGHT.rotated(randf_range(0, 2 * PI)) * speed
@@ -23,16 +34,64 @@ func _process(delta):
 		
 		for body in neighbor_bodies:
 			if not body == $FishBody:
+				#separate from any nearby neighbors
 				var separation_direction: Vector2 = global_position - body.global_position
-				velocity += separation_direction * delta
+				velocity += separation_direction * neighbor_separation_weight * delta
+				
+				#get nearby neighbors' total velocities
 				neighbor_vel_total_x += body.get_parent().velocity.x
 				neighbor_vel_total_y += body.get_parent().velocity.y
 		
+		#use nearby neighbors total velocities to get an average velocity
 		var neighbor_vel_avg_x: float = neighbor_vel_total_x/(neighbor_bodies.size()-1)
 		var neighbor_vel_avg_y: float = neighbor_vel_total_y/(neighbor_bodies.size()-1)
 		var neighbor_vel_avg: Vector2 = Vector2(neighbor_vel_avg_x,neighbor_vel_avg_y)
 		
-		velocity = (velocity+(neighbor_vel_avg*delta)).normalized() * speed
-		
-		#next step: move towards avg position of neighbors, either in current detection area or a wider area
-		#after that: raycast to avoid obstacles (different collision layer)
+		#add average velocity of neighbors to my velocity
+		velocity += neighbor_vel_avg * neighbor_alignment_weight * delta
+	
+	#move towards avg position of neighbors, either in current detection area or a wider area
+	
+	#finally, normalize the velocity with all the added vectors
+	velocity = velocity.normalized() * speed
+	
+	
+	#avoid tank borders - this should be updated to use raycasts to check for collisions with obstacles, so fish can avoid rocks, etc. too
+	
+	var current_dir: Vector2 = velocity.normalized()
+	
+	if dir_inside_bounds(current_dir):
+		pass
+	else:
+		#randomly choose to check to the right or to the left
+		var check_rotation: int
+		if randi_range(1,10) > 5:
+			check_rotation = 1
+		else:
+			check_rotation = -1
+		#check increasing angles to the given direction
+		if dir_inside_bounds(current_dir.rotated((check_rotation * 2 * PI / 6))):
+			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 2 * PI / 6)) * obstacle_avoidance_weight * delta)
+			velocity *= speed
+		elif dir_inside_bounds(current_dir.rotated((check_rotation * 2 * PI / 3))):
+			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 2 * PI / 3)) * obstacle_avoidance_weight * delta)
+			velocity *= speed
+	
+	
+	#lock position to within tank
+	if global_position.x > max_x:
+		parent_object.position.x = max_x
+	if global_position.x < min_x:
+		parent_object.position.x = min_x
+	if global_position.y > max_y:
+		parent_object.position.y = max_y
+	if global_position.y < min_y:
+		parent_object.position.y = min_y
+
+func dir_inside_bounds(dir: Vector2) -> bool:
+	if (global_position + (dir * border_check_distance)).x > max_x \
+	or (global_position + (dir * border_check_distance)).x < min_x \
+	or (global_position + (dir * border_check_distance)).y > max_y \
+	or (global_position + (dir * border_check_distance)).y < min_y :
+		return false
+	else: return true

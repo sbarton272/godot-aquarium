@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhpo0nqynfr3k"]
+
+[ext_resource type="Texture2D" uid="uid://bx81xf55i0uhs" path="res://graphics/Light1.png" id="1_2igwn"]
+
+[sub_resource type="Gradient" id="Gradient_mivhi"]
+colors = PackedColorArray(1, 1, 1, 0.52549, 1, 1, 1, 0)
+
+[node name="BubbleTrail" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 25
+lifetime = 1.5
+lifetime_randomness = 0.1
+texture = ExtResource("1_2igwn")
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(-1, 0)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 15.0
+damping_max = 10.0
+scale_amount_min = 0.01
+scale_amount_max = 0.03
+color_ramp = SubResource("Gradient_mivhi")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4mx6gs6cuxdw"]
+[gd_scene load_steps=6 format=3 uid="uid://c4mx6gs6cuxdw"]
 
 [ext_resource type="Texture2D" uid="uid://do2cs7sacr5ab" path="res://graphics/spencer_orange_fish_2.png" id="1_j3407"]
 [ext_resource type="PackedScene" uid="uid://cm3pp3tnwpafg" path="res://DragAndDropTank/splash_sound_component.tscn" id="3_jqcxl"]
 [ext_resource type="PackedScene" uid="uid://dik23p44j3wro" path="res://DragAndDropTank/fish_movement_component_2.tscn" id="4_04txc"]
 [ext_resource type="PackedScene" uid="uid://dyrrvy2cr6wyo" path="res://DragAndDropTank/sprite_size_randomizer_component.tscn" id="4_ik5mi"]
+[ext_resource type="PackedScene" uid="uid://bhpo0nqynfr3k" path="res://bubble_trail.tscn" id="5_alntf"]
 
 [node name="DragAndDropFishOrange" type="Node2D"]
 
@@ -20,3 +21,13 @@ max_scale = 1.3
 
 [node name="FishMovementComponent2" parent="." node_paths=PackedStringArray("parent_object") instance=ExtResource("4_04txc")]
 parent_object = NodePath("..")
+neighbor_alignment_weight = 1.0
+
+[node name="BubbleTrail" parent="." instance=ExtResource("5_alntf")]
+position = Vector2(-16, -9)
+
+[node name="BubbleTrail2" parent="." instance=ExtResource("5_alntf")]
+position = Vector2(-16, 10)
+
+[node name="BubbleTrail3" parent="." instance=ExtResource("5_alntf")]
+position = Vector2(-23, 1)

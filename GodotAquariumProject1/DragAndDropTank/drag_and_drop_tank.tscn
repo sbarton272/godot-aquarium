@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d37erh7ejwqs8"]
+[gd_scene load_steps=9 format=3 uid="uid://d37erh7ejwqs8"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_lywwj"]
 [ext_resource type="Script" path="res://DragAndDropTank/fish_button.gd" id="2_0p5uj"]
@@ -7,22 +7,33 @@
 [ext_resource type="PackedScene" uid="uid://5oupmlivqrpn" path="res://DragAndDropTank/drag_and_drop_fish_purple.tscn" id="4_4jeir"]
 [ext_resource type="PackedScene" uid="uid://4mxcrdtg7rmt" path="res://DragAndDropTank/drag_and_drop_kelp.tscn" id="5_e0qyk"]
 [ext_resource type="AudioStream" uid="uid://bktbu5234fq83" path="res://audio/Underwater_test.mp3" id="7_bg8pr"]
+[ext_resource type="PackedScene" uid="uid://dyabe5swsd6hx" path="res://player/diver.tscn" id="8_bqwrj"]
 
 [node name="DragAndDropTank" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 
 [node name="TankBackground" type="Sprite2D" parent="."]
 position = Vector2(600, 401)
 texture = ExtResource("1_lywwj")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(678, 400)
+zoom = Vector2(0.85, 0.81)
 
-[node name="InventoryMenuContainer" type="GridContainer" parent="."]
+[node name="Diver" parent="." instance=ExtResource("8_bqwrj")]
+position = Vector2(399, 239)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="InventoryMenuContainer" type="GridContainer" parent="CanvasLayer"]
 offset_left = 1203.0
 offset_top = 3.0
 offset_right = 1371.0
 offset_bottom = 805.0
 
-[node name="FishButton" type="Button" parent="InventoryMenuContainer"]
+[node name="FishButton" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
 layout_mode = 2
 action_mode = 0
 keep_pressed_outside = true
@@ -30,7 +41,7 @@ text = "Orange Fish"
 script = ExtResource("2_0p5uj")
 my_scene = ExtResource("3_ws3tr")
 
-[node name="FishButton2" type="Button" parent="InventoryMenuContainer"]
+[node name="FishButton2" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
 layout_mode = 2
 action_mode = 0
 keep_pressed_outside = true
@@ -38,17 +49,13 @@ text = "Purple Fish"
 script = ExtResource("2_0p5uj")
 my_scene = ExtResource("4_4jeir")
 
-[node name="FishButton3" type="Button" parent="InventoryMenuContainer"]
+[node name="FishButton3" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
 layout_mode = 2
 action_mode = 0
 keep_pressed_outside = true
 text = "Kelp"
 script = ExtResource("2_0p5uj")
 my_scene = ExtResource("5_e0qyk")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(678, 400)
-zoom = Vector2(0.85, 0.81)
 
 [node name="ButtonDetector" type="Node2D" parent="."]
 script = ExtResource("2_ohu33")
@@ -57,9 +64,9 @@ script = ExtResource("2_ohu33")
 stream = ExtResource("7_bg8pr")
 autoplay = true
 
-[connection signal="button_down" from="InventoryMenuContainer/FishButton" to="InventoryMenuContainer/FishButton" method="_on_button_down"]
-[connection signal="clicked" from="InventoryMenuContainer/FishButton" to="ButtonDetector" method="_on_fish_button_clicked"]
-[connection signal="button_down" from="InventoryMenuContainer/FishButton2" to="InventoryMenuContainer/FishButton2" method="_on_button_down"]
-[connection signal="clicked" from="InventoryMenuContainer/FishButton2" to="ButtonDetector" method="_on_fish_button_clicked"]
-[connection signal="button_down" from="InventoryMenuContainer/FishButton3" to="InventoryMenuContainer/FishButton3" method="_on_button_down"]
-[connection signal="clicked" from="InventoryMenuContainer/FishButton3" to="ButtonDetector" method="_on_fish_button_clicked"]
+[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton" to="CanvasLayer/InventoryMenuContainer/FishButton" method="_on_button_down"]
+[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton" to="ButtonDetector" method="_on_fish_button_clicked"]
+[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton2" to="CanvasLayer/InventoryMenuContainer/FishButton2" method="_on_button_down"]
+[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton2" to="ButtonDetector" method="_on_fish_button_clicked"]
+[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton3" to="CanvasLayer/InventoryMenuContainer/FishButton3" method="_on_button_down"]
+[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton3" to="ButtonDetector" method="_on_fish_button_clicked"]

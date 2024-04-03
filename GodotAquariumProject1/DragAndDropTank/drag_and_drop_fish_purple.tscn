@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://5oupmlivqrpn"]
+[gd_scene load_steps=5 format=3 uid="uid://5oupmlivqrpn"]
 
 [ext_resource type="Texture2D" uid="uid://bijk2b3hdotsk" path="res://graphics/spencer_purple_fish_1.png" id="1_m6gt6"]
 [ext_resource type="Script" path="res://DragAndDropTank/fish_movement_component_2.gd" id="2_2jor5"]
+[ext_resource type="PackedScene" uid="uid://cm3pp3tnwpafg" path="res://DragAndDropTank/splash_sound_component.tscn" id="3_p2yil"]
+[ext_resource type="PackedScene" uid="uid://dyrrvy2cr6wyo" path="res://DragAndDropTank/sprite_size_randomizer_component.tscn" id="4_xxmxq"]
 
 [node name="Fish" type="Node2D"]
 
@@ -11,3 +13,10 @@ texture = ExtResource("1_m6gt6")
 
 [node name="FishMovementComponent" type="Node2D" parent="."]
 script = ExtResource("2_2jor5")
+
+[node name="SplashSoundComponent" parent="." instance=ExtResource("3_p2yil")]
+
+[node name="SpriteSizeRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite") instance=ExtResource("4_xxmxq")]
+target_sprite = NodePath("../FishSprite")
+min_scale = 0.3
+max_scale = 0.7

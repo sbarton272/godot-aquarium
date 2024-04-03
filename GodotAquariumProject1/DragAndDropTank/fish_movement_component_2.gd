@@ -1,50 +1,38 @@
 extends Node2D
 
-var is_moving: bool = true
-var facing: float
-var speed: float = 50
-var turn_speed: float
-var move_time: float
-var move_time_max: float
+@export var parent_object: Node2D
 
-@onready var parent_object: Node2D = $".."
-@onready var sprite: Sprite2D = $"../FishSprite"
+var speed: float = 100
+var velocity: Vector2
 
-func _ready() -> void:
-	get_new_direction()
-	is_moving = true
+@onready var neighbor_detector: Area2D = $NeighborDetector
 
-func _process(delta: float) -> void:
-	if is_moving:
-		move(delta)
+func _ready():
+	velocity = Vector2.RIGHT.rotated(randf_range(0, 2 * PI)) * speed
+
+func _process(delta):
+	parent_object.position += velocity * delta
+	parent_object.rotation = velocity.angle()
 	
-	#keep fish within bounds
-	if parent_object.position.x > draganddropglobals.max_x:
-		parent_object.position.x = draganddropglobals.max_x
+	var neighbor_bodies: Array[Node2D] = neighbor_detector.get_overlapping_bodies()
+	
+	if neighbor_bodies.size() > 1:
 		
-	if parent_object.position.x < draganddropglobals.min_x:
-		parent_object.position.x = draganddropglobals.min_x
+		var neighbor_vel_total_x: float
+		var neighbor_vel_total_y: float
 		
-	if parent_object.position.y > draganddropglobals.max_y:
-		parent_object.position.y = draganddropglobals.max_y
+		for body in neighbor_bodies:
+			if not body == $FishBody:
+				var separation_direction: Vector2 = global_position - body.global_position
+				velocity += separation_direction * delta
+				neighbor_vel_total_x += body.get_parent().velocity.x
+				neighbor_vel_total_y += body.get_parent().velocity.y
 		
-	if parent_object.position.y < draganddropglobals.min_y:
-		parent_object.position.y = draganddropglobals.min_y
-
-func move(delta: float):
-	parent_object.position += Vector2.RIGHT.rotated(facing) * speed * delta
-	facing += turn_speed
-	parent_object.rotation = facing
-	move_time += delta
-	if move_time >= move_time_max:
-		get_new_direction()
-
-func get_new_direction():
-	move_time = 0
-	facing = randf_range(0, (2*PI))
-	turn_speed = randf_range(-0.05,0.05)
-	move_time_max = randf_range(0.5,5)
-	if facing > PI/2 and facing < 3*PI/2:
-		sprite.flip_v = true
-	else:
-		sprite.flip_v = false
+		var neighbor_vel_avg_x: float = neighbor_vel_total_x/(neighbor_bodies.size()-1)
+		var neighbor_vel_avg_y: float = neighbor_vel_total_y/(neighbor_bodies.size()-1)
+		var neighbor_vel_avg: Vector2 = Vector2(neighbor_vel_avg_x,neighbor_vel_avg_y)
+		
+		velocity = (velocity+(neighbor_vel_avg*delta)).normalized() * speed
+		
+		#next step: move towards avg position of neighbors, either in current detection area or a wider area
+		#after that: raycast to avoid obstacles (different collision layer)

@@ -45,7 +45,7 @@ kelp_spawn={
 
 [layer_names]
 
-2d_physics/layer_2="Fish Eating"
+2d_physics/layer_1="FishBoid"
 
 [rendering]
 

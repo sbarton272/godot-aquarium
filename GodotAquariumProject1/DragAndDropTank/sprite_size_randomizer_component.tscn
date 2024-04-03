@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyrrvy2cr6wyo"]
+
+[ext_resource type="Script" path="res://DragAndDropTank/sprite_size_randomizer_component.gd" id="1_gbt16"]
+
+[node name="SpriteSizeRandomizerComponent" type="Node2D"]
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_gbt16")

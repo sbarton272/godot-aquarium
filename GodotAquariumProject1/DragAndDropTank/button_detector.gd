@@ -10,6 +10,8 @@ func _process(delta):
 	pass
 
 func _on_fish_button_clicked(scene: PackedScene):
-	var new_scene = scene.instantiate()
-	new_scene.position = get_viewport_rect().get_center()
-	add_child(new_scene)
+	
+	for i in 10:
+		var new_scene = scene.instantiate()
+		new_scene.position = Vector2(randf_range(draganddropglobals.min_x,draganddropglobals.max_x),randf_range(draganddropglobals.min_y,draganddropglobals.max_y))
+		add_child(new_scene)

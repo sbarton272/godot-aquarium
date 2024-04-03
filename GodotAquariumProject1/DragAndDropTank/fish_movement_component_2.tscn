@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dik23p44j3wro"]
+
+[ext_resource type="Script" path="res://DragAndDropTank/fish_movement_component_2.gd" id="1_efg5s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tkw8n"]
+radius = 27.074
+
+[node name="FishMovementComponent2" type="Node2D"]
+script = ExtResource("1_efg5s")
+
+[node name="NeighborDetector" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NeighborDetector"]
+scale = Vector2(0.7, 0.7)
+polygon = PackedVector2Array(-1, 0, -70, -61, -25, -81, 21, -81, 57, -69, 84, -48, 96, -25, 102, -2, 98, 27, 87, 57, 65, 81, 30, 96, -19, 96, -69, 70)
+
+[node name="FishBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishBody"]
+shape = SubResource("CircleShape2D_tkw8n")
+
+[connection signal="body_entered" from="NeighborDetector" to="." method="_on_neighbor_detector_body_entered"]

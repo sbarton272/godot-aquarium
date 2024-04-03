@@ -10,3 +10,4 @@ func _ready():
 	kelp_sprite.scale = Vector2(rand_scale,rand_scale)
 	position.y = 600
 	position.x = randi_range(50,1150)
+	kelp_sprite.flip_h = randi_range(0,1)

@@ -20,4 +20,3 @@ max_scale = 0.7
 
 [node name="FishMovementComponent2" parent="." node_paths=PackedStringArray("parent_object") instance=ExtResource("4_yxhql")]
 parent_object = NodePath("..")
-neighbor_alignment_weight = 3.0

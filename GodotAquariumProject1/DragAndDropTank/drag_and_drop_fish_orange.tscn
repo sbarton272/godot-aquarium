@@ -21,7 +21,7 @@ max_scale = 1.3
 
 [node name="FishMovementComponent2" parent="." node_paths=PackedStringArray("parent_object") instance=ExtResource("4_04txc")]
 parent_object = NodePath("..")
-neighbor_alignment_weight = 1.0
+neighbor_alignment_weight = 2.0
 
 [node name="BubbleTrail" parent="." instance=ExtResource("5_alntf")]
 position = Vector2(-16, -9)

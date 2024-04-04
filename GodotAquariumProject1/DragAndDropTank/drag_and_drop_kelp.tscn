@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://DragAndDropTank/drag_and_drop_kelp.gd" id="1_j5ibn"]
 [ext_resource type="Shader" path="res://resources/kelp_sway_shader.gdshader" id="2_wno2s"]
-[ext_resource type="Texture2D" uid="uid://cl4is2j61po2t" path="res://graphics/kelp.png" id="3_demxg"]
+[ext_resource type="Texture2D" uid="uid://y0ahdwhi576r" path="res://graphics/kelp_2_frames.png" id="3_7dqyc"]
 [ext_resource type="PackedScene" uid="uid://cm3pp3tnwpafg" path="res://DragAndDropTank/splash_sound_component.tscn" id="4_gjfx2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1obi"]
@@ -12,13 +12,13 @@ shader_parameter/sway_distance = 0.0
 
 [node name="Kelp" type="Node2D"]
 script = ExtResource("1_j5ibn")
+kelp_frame = Array[Sprite2D]([null, null])
 
 [node name="KelpSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n1obi")
-position = Vector2(37, 0)
-rotation = -0.125198
+position = Vector2(0, -328)
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_demxg")
+texture = ExtResource("3_7dqyc")
 hframes = 2
 
 [node name="SplashSoundComponent" parent="." instance=ExtResource("4_gjfx2")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d37erh7ejwqs8"]
+[gd_scene load_steps=13 format=3 uid="uid://d37erh7ejwqs8"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_lywwj"]
 [ext_resource type="Script" path="res://DragAndDropTank/fish_button.gd" id="2_0p5uj"]
@@ -7,7 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://5oupmlivqrpn" path="res://DragAndDropTank/drag_and_drop_fish_purple.tscn" id="4_4jeir"]
 [ext_resource type="PackedScene" uid="uid://4mxcrdtg7rmt" path="res://DragAndDropTank/drag_and_drop_kelp.tscn" id="5_e0qyk"]
 [ext_resource type="AudioStream" uid="uid://bktbu5234fq83" path="res://audio/Underwater_test.mp3" id="7_bg8pr"]
+[ext_resource type="Script" path="res://DragAndDropTank/rock_button.gd" id="7_x68nb"]
 [ext_resource type="PackedScene" uid="uid://dyabe5swsd6hx" path="res://player/diver.tscn" id="8_bqwrj"]
+[ext_resource type="PackedScene" uid="uid://dqqol6fri7fkh" path="res://DragAndDropTank/rock.tscn" id="9_cwn0c"]
+[ext_resource type="Script" path="res://DragAndDropTank/rock_placement_slots.gd" id="11_kt7vb"]
+[ext_resource type="PackedScene" uid="uid://bu53ejbra4cwo" path="res://DragAndDropTank/placement_slot.tscn" id="11_qguft"]
 
 [node name="DragAndDropTank" type="Node2D"]
 
@@ -49,12 +53,20 @@ text = "Purple Fish"
 script = ExtResource("2_0p5uj")
 my_scene = ExtResource("4_4jeir")
 
-[node name="FishButton3" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
+[node name="RockButton" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
+layout_mode = 2
+action_mode = 0
+keep_pressed_outside = true
+text = "Rock"
+script = ExtResource("7_x68nb")
+my_scene = ExtResource("9_cwn0c")
+
+[node name="RockButton2" type="Button" parent="CanvasLayer/InventoryMenuContainer"]
 layout_mode = 2
 action_mode = 0
 keep_pressed_outside = true
 text = "Kelp"
-script = ExtResource("2_0p5uj")
+script = ExtResource("7_x68nb")
 my_scene = ExtResource("5_e0qyk")
 
 [node name="ButtonDetector" type="Node2D" parent="."]
@@ -64,9 +76,23 @@ script = ExtResource("2_ohu33")
 stream = ExtResource("7_bg8pr")
 autoplay = true
 
+[node name="RockPlacementSlots" type="Node2D" parent="."]
+script = ExtResource("11_kt7vb")
+
+[node name="PlacementSlot" parent="RockPlacementSlots" instance=ExtResource("11_qguft")]
+position = Vector2(300, 800)
+
+[node name="PlacementSlot2" parent="RockPlacementSlots" instance=ExtResource("11_qguft")]
+position = Vector2(600, 800)
+
+[node name="PlacementSlot3" parent="RockPlacementSlots" instance=ExtResource("11_qguft")]
+position = Vector2(900, 800)
+
 [connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton" to="CanvasLayer/InventoryMenuContainer/FishButton" method="_on_button_down"]
 [connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton" to="ButtonDetector" method="_on_fish_button_clicked"]
 [connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton2" to="CanvasLayer/InventoryMenuContainer/FishButton2" method="_on_button_down"]
 [connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton2" to="ButtonDetector" method="_on_fish_button_clicked"]
-[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton3" to="CanvasLayer/InventoryMenuContainer/FishButton3" method="_on_button_down"]
-[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton3" to="ButtonDetector" method="_on_fish_button_clicked"]
+[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/RockButton" to="CanvasLayer/InventoryMenuContainer/RockButton" method="_on_button_down"]
+[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/RockButton" to="ButtonDetector" method="_on_rock_button_clicked"]
+[connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/RockButton2" to="CanvasLayer/InventoryMenuContainer/RockButton2" method="_on_button_down"]
+[connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/RockButton2" to="ButtonDetector" method="_on_rock_button_clicked"]

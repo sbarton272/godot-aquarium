@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqqol6fri7fkh"]
+
+[ext_resource type="Script" path="res://DragAndDropTank/rock.gd" id="1_grbuc"]
+[ext_resource type="Texture2D" uid="uid://bvewewht41ekw" path="res://graphics/Rock.png" id="1_jcao0"]
+[ext_resource type="PackedScene" uid="uid://bu53ejbra4cwo" path="res://DragAndDropTank/placement_slot.tscn" id="3_vadjt"]
+
+[node name="Rock" type="Node2D"]
+script = ExtResource("1_grbuc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -36)
+texture = ExtResource("1_jcao0")
+
+[node name="PlacementSlots" type="Node2D" parent="."]
+
+[node name="PlacementSlot" parent="PlacementSlots" instance=ExtResource("3_vadjt")]
+position = Vector2(-53, -29)
+
+[node name="PlacementSlot2" parent="PlacementSlots" instance=ExtResource("3_vadjt")]
+position = Vector2(-9, -58)
+
+[node name="PlacementSlot3" parent="PlacementSlots" instance=ExtResource("3_vadjt")]
+position = Vector2(69, -36)

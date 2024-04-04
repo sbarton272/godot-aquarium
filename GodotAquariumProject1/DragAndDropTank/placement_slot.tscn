@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu53ejbra4cwo"]
+
+[ext_resource type="Texture2D" uid="uid://bx81xf55i0uhs" path="res://graphics/Light1.png" id="1_ss3xd"]
+
+[node name="PlacementSlot" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0, 1)
+texture = ExtResource("1_ss3xd")
+texture_scale = 0.5

@@ -5,8 +5,8 @@ extends Node2D
 @export var speed: float = 100
 @export var border_check_distance: float = 100
 @export var neighbor_separation_weight: float = 1
-@export var neighbor_alignment_weight: float = 10
-@export var obstacle_avoidance_weight: float = 5
+@export var neighbor_alignment_weight: float = 3
+@export var obstacle_avoidance_weight: float = 4
 
 var velocity: Vector2
 
@@ -69,12 +69,18 @@ func _process(delta):
 			check_rotation = 1
 		else:
 			check_rotation = -1
-		#check increasing angles to the given direction
-		if dir_inside_bounds(current_dir.rotated((check_rotation * 2 * PI / 6))):
-			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 2 * PI / 6)) * obstacle_avoidance_weight * delta)
+		#check increasing amounts of the chosen left/right rotation
+		if dir_inside_bounds(current_dir.rotated((check_rotation * PI / 3))):
+			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * PI / 3)) * obstacle_avoidance_weight * delta)
 			velocity *= speed
 		elif dir_inside_bounds(current_dir.rotated((check_rotation * 2 * PI / 3))):
 			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 2 * PI / 3)) * obstacle_avoidance_weight * delta)
+			velocity *= speed
+		elif dir_inside_bounds(current_dir.rotated((check_rotation * PI))):
+			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * PI)) * obstacle_avoidance_weight * delta)
+			velocity *= speed
+		elif dir_inside_bounds(current_dir.rotated((check_rotation * 4 * PI / 3))):
+			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 4 * PI / 3)) * obstacle_avoidance_weight * delta)
 			velocity *= speed
 	
 	

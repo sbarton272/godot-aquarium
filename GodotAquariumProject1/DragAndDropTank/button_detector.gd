@@ -15,3 +15,7 @@ func _on_fish_button_clicked(scene: PackedScene):
 		var new_scene = scene.instantiate()
 		new_scene.position = Vector2(randf_range(draganddropglobals.min_x,draganddropglobals.max_x),randf_range(draganddropglobals.min_y,draganddropglobals.max_y))
 		add_child(new_scene)
+
+func _on_rock_button_clicked(scene):
+	var new_scene = scene.instantiate()
+	add_child(new_scene)

@@ -8,7 +8,7 @@ colors = PackedColorArray(1, 1, 1, 0.52549, 1, 1, 1, 0)
 [node name="BubbleTrail" type="Node2D"]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 25
+amount = 15
 lifetime = 1.5
 lifetime_randomness = 0.1
 texture = ExtResource("1_2igwn")

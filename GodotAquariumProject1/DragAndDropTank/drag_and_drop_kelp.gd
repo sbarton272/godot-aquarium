@@ -5,6 +5,7 @@ extends Node2D
 @export var kelp_frame: Array[Texture]
 
 var is_held: bool = true
+var current_slot: Node2D
 
 func _ready():
 	var shader_material: ShaderMaterial = kelp_sprite.material as ShaderMaterial
@@ -17,9 +18,15 @@ func _process(delta):
 	if is_held:
 		var slots: Array[Node] = get_tree().get_nodes_in_group("KelpPlacementSlots")
 		var closest_pos: Vector2 = slots[0].global_position
+		current_slot = slots[0]
 		for slot in slots:
 			if get_global_mouse_position().distance_to(slot.global_position) < get_global_mouse_position().distance_to(closest_pos):
 				closest_pos = slot.global_position
-		position = closest_pos
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) == false:
-			is_held = false
+				current_slot = slot
+		if get_global_mouse_position().distance_to(closest_pos) < 100:
+			position = closest_pos
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) == false:
+				is_held = false
+				current_slot.slot_filled()
+		else:
+			position = get_global_mouse_position()

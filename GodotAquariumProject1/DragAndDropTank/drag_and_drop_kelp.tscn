@@ -12,7 +12,6 @@ shader_parameter/sway_distance = 0.0
 
 [node name="Kelp" type="Node2D"]
 script = ExtResource("1_j5ibn")
-kelp_frame = Array[Sprite2D]([null, null])
 
 [node name="KelpSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n1obi")

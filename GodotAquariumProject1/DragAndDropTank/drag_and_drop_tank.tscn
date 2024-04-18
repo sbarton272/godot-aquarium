@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d37erh7ejwqs8"]
+[gd_scene load_steps=16 format=3 uid="uid://d37erh7ejwqs8"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_lywwj"]
 [ext_resource type="Script" path="res://DragAndDropTank/fish_button.gd" id="2_0p5uj"]
@@ -12,7 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dqqol6fri7fkh" path="res://DragAndDropTank/rock.tscn" id="9_cwn0c"]
 [ext_resource type="Script" path="res://DragAndDropTank/rock_placement_slots.gd" id="11_kt7vb"]
 [ext_resource type="PackedScene" uid="uid://bu53ejbra4cwo" path="res://DragAndDropTank/placement_slot.tscn" id="11_qguft"]
-[ext_resource type="PackedScene" uid="uid://dqg1thmo1dsxx" path="res://substrate_creator.tscn" id="13_d3by5"]
+[ext_resource type="PackedScene" uid="uid://dqg1thmo1dsxx" path="res://DragAndDropTank/substrate/substrate_creator.tscn" id="13_d3by5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18loj"]
+size = Vector2(1199, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5i1q"]
+size = Vector2(25, 832)
 
 [node name="DragAndDropTank" type="Node2D"]
 
@@ -21,6 +27,9 @@
 [node name="TankBackground" type="Sprite2D" parent="."]
 position = Vector2(600, 401)
 texture = ExtResource("1_lywwj")
+
+[node name="SubstrateCreator" parent="." instance=ExtResource("13_d3by5")]
+position = Vector2(-4.64844, -0.984375)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(678, 400)
@@ -89,8 +98,37 @@ position = Vector2(600, 800)
 [node name="PlacementSlot3" parent="RockPlacementSlots" instance=ExtResource("11_qguft")]
 position = Vector2(900, 800)
 
-[node name="SubstrateCreator" parent="." instance=ExtResource("13_d3by5")]
-position = Vector2(-4.64844, -0.984375)
+[node name="TankBoundaries" type="Node2D" parent="."]
+
+[node name="TankBase" type="Node2D" parent="TankBoundaries"]
+position = Vector2(600, 811)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TankBoundaries/TankBase"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/TankBase/StaticBody2D"]
+shape = SubResource("RectangleShape2D_18loj")
+
+[node name="TankSide" type="Node2D" parent="TankBoundaries"]
+position = Vector2(-12, 403)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TankBoundaries/TankSide"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/TankSide/StaticBody2D"]
+shape = SubResource("RectangleShape2D_t5i1q")
+
+[node name="TankSide2" type="Node2D" parent="TankBoundaries"]
+position = Vector2(1213, 406)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TankBoundaries/TankSide2"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/TankSide2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_t5i1q")
 
 [connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton" to="CanvasLayer/InventoryMenuContainer/FishButton" method="_on_button_down"]
 [connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton" to="ButtonDetector" method="_on_fish_button_clicked"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://k0ju6o7i4w7c"]
+
+[ext_resource type="PackedScene" uid="uid://cc1hvnhrprn25" path="res://UI/shop_menu.tscn" id="1_hiuky"]
+[ext_resource type="Script" path="res://systems/game_manager.gd" id="1_o56bf"]
+[ext_resource type="PackedScene" uid="uid://cd0k7hkmtxvc5" path="res://systems/tank.tscn" id="2_8cotb"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_o56bf")
+
+[node name="Tank" parent="." instance=ExtResource("2_8cotb")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ShopMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("1_hiuky")]
+game_manager = NodePath("../..")

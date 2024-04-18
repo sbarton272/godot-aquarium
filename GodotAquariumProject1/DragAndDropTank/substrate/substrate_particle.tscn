@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c68t2ljdrvc1g"]
 
-[ext_resource type="Script" path="res://substrate_particle.gd" id="1_any0w"]
+[ext_resource type="Script" path="res://DragAndDropTank/substrate/substrate_particle.gd" id="1_any0w"]
 [ext_resource type="Texture2D" uid="uid://xl6383yqvexs" path="res://graphics/5x5 White.png" id="1_h35x8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5ikt"]

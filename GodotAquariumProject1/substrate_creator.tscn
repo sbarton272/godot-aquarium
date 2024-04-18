@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqg1thmo1dsxx"]
+
+[ext_resource type="Script" path="res://subtrate_creator.gd" id="1_ppyr4"]
+
+[node name="SubstrateCreator" type="Node2D"]
+script = ExtResource("1_ppyr4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d37erh7ejwqs8"]
+[gd_scene load_steps=14 format=3 uid="uid://d37erh7ejwqs8"]
 
 [ext_resource type="Texture2D" uid="uid://dijcsgjaqbhmb" path="res://graphics/tank.png" id="1_lywwj"]
 [ext_resource type="Script" path="res://DragAndDropTank/fish_button.gd" id="2_0p5uj"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dqqol6fri7fkh" path="res://DragAndDropTank/rock.tscn" id="9_cwn0c"]
 [ext_resource type="Script" path="res://DragAndDropTank/rock_placement_slots.gd" id="11_kt7vb"]
 [ext_resource type="PackedScene" uid="uid://bu53ejbra4cwo" path="res://DragAndDropTank/placement_slot.tscn" id="11_qguft"]
+[ext_resource type="PackedScene" uid="uid://dqg1thmo1dsxx" path="res://substrate_creator.tscn" id="13_d3by5"]
 
 [node name="DragAndDropTank" type="Node2D"]
 
@@ -87,6 +88,9 @@ position = Vector2(600, 800)
 
 [node name="PlacementSlot3" parent="RockPlacementSlots" instance=ExtResource("11_qguft")]
 position = Vector2(900, 800)
+
+[node name="SubstrateCreator" parent="." instance=ExtResource("13_d3by5")]
+position = Vector2(-4.64844, -0.984375)
 
 [connection signal="button_down" from="CanvasLayer/InventoryMenuContainer/FishButton" to="CanvasLayer/InventoryMenuContainer/FishButton" method="_on_button_down"]
 [connection signal="clicked" from="CanvasLayer/InventoryMenuContainer/FishButton" to="ButtonDetector" method="_on_fish_button_clicked"]

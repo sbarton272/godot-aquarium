@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc1hvnhrprn25"]
+[gd_scene load_steps=5 format=3 uid="uid://cc1hvnhrprn25"]
 
 [ext_resource type="Script" path="res://UI/shop_menu.gd" id="1_dlle5"]
-[ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="2_es25f"]
+[ext_resource type="PackedScene" uid="uid://cprqna4hm6grl" path="res://UI/shop_button.tscn" id="2_d4wpi"]
+[ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://entities/garibaldi.tscn" id="3_c50vc"]
+[ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="3_mc6b6"]
 
 [node name="ShopMenu" type="Control"]
-process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,30 +28,46 @@ offset_bottom = 275.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="Title" type="Label" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_bottom = 23.0
 grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Title" type="Label" parent="Panel/VBoxContainer"]
-layout_mode = 2
 text = "Fish Shop"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.5
+offset_top = -91.5
+offset_right = 144.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="FishButton" type="Button" parent="Panel/VBoxContainer/GridContainer"]
+[node name="GaribaldiButton" parent="Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_d4wpi")]
 layout_mode = 2
-theme_override_constants/icon_max_width = 120
-text = "Test Fish
-Cost: 3
-Food requirement: 5
-Entertainment value: 5
-Sociability: 1"
-icon = ExtResource("2_es25f")
-alignment = 0
+icon = ExtResource("3_mc6b6")
+my_entity_name = "Garibaldi"
+my_entity_entertainment = 5
+my_entity_scene = ExtResource("3_c50vc")
+my_entity_cost = 30
+
+[connection signal="shop_item_purchased" from="Panel/MarginContainer/VBoxContainer/GridContainer/GaribaldiButton" to="." method="_on_shop_button_shop_item_purchased"]

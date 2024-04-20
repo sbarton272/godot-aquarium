@@ -15,6 +15,10 @@ run/main_scene="res://systems/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://graphics/icon.svg"
 
+[autoload]
+
+PlayerData="*res://systems/player_data.gd"
+
 [input]
 
 OpenShop={

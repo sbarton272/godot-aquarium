@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cd0k7hkmtxvc5"]
 
 [ext_resource type="Texture2D" uid="uid://kyddae7gjmc0" path="res://graphics/tank.png" id="1_iavpn"]
-[ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://fish.tscn" id="2_3s3ma"]
+[ext_resource type="Script" path="res://systems/tank_manager.gd" id="1_v6e4k"]
 
 [node name="Tank" type="Node2D"]
-process_mode = 1
+script = ExtResource("1_v6e4k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TankBackground" type="Sprite2D" parent="."]
 texture = ExtResource("1_iavpn")
 
-[node name="Fish" parent="." instance=ExtResource("2_3s3ma")]
+[node name="Entities" type="Node2D" parent="."]

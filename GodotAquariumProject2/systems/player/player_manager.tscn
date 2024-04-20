@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmblw1r4vut5d"]
+
+[ext_resource type="Script" path="res://systems/player/player_manager.gd" id="1_wefm5"]
+
+[node name="PlayerManager" type="Node2D" node_paths=PackedStringArray("tank")]
+script = ExtResource("1_wefm5")
+tank = NodePath("")

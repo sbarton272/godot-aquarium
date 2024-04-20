@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://k0ju6o7i4w7c"]
+[gd_scene load_steps=6 format=3 uid="uid://k0ju6o7i4w7c"]
 
 [ext_resource type="PackedScene" uid="uid://cc1hvnhrprn25" path="res://UI/shop_menu.tscn" id="1_hiuky"]
 [ext_resource type="Script" path="res://systems/game_manager.gd" id="1_o56bf"]
 [ext_resource type="PackedScene" uid="uid://cd0k7hkmtxvc5" path="res://systems/tank.tscn" id="2_8cotb"]
+[ext_resource type="PackedScene" uid="uid://dmblw1r4vut5d" path="res://systems/player/player_manager.tscn" id="3_2bdjo"]
+[ext_resource type="PackedScene" uid="uid://c1xxu764b5f64" path="res://info_panel.tscn" id="5_rs0p0"]
 
 [node name="GameManager" type="Node" node_paths=PackedStringArray("tank")]
 process_mode = 3
@@ -10,10 +12,18 @@ script = ExtResource("1_o56bf")
 tank = NodePath("Tank")
 
 [node name="Tank" parent="." instance=ExtResource("2_8cotb")]
+process_mode = 1
+
+[node name="PlayerManager" parent="." node_paths=PackedStringArray("tank") instance=ExtResource("3_2bdjo")]
+process_mode = 1
+tank = NodePath("../Tank")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ShopMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("1_hiuky")]
+process_mode = 2
 game_manager = NodePath("../..")
+
+[node name="InfoPanel" parent="CanvasLayer" instance=ExtResource("5_rs0p0")]
 
 [connection signal="entity_purchased" from="CanvasLayer/ShopMenu" to="Tank" method="spawn_entity"]

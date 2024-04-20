@@ -17,7 +17,11 @@ config/icon="res://graphics/icon.svg"
 
 [autoload]
 
-PlayerData="*res://systems/player_data.gd"
+PlayerData="*res://systems/player/player_data.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 

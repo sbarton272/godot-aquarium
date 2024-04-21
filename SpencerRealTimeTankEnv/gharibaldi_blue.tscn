@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2coum5hj1x6o"]
+
+[ext_resource type="PackedScene" uid="uid://b6ld0787lrlkp" path="res://creature.tscn" id="1_adv54"]
+[ext_resource type="Texture2D" uid="uid://bvo3ueegp4fgw" path="res://art/gharibaldi/gharibaldi.png" id="2_7376f"]
+[ext_resource type="Texture2D" uid="uid://bgt4m3xh6s5hs" path="res://art/gharibaldi/blue.png" id="3_0d4j4"]
+[ext_resource type="Texture2D" uid="uid://by2d5ucfsf87h" path="res://art/gharibaldi/light_blue.png" id="4_a2q7t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jeqwj"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0d4j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a2q7t")
+}],
+"loop": true,
+"name": &"color",
+"speed": 1.0
+}]
+
+[node name="GharibaldiBlue" instance=ExtResource("1_adv54")]
+scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" parent="." index="0"]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7376f")
+region_enabled = true
+region_rect = Rect2(53, 157, 958, 468)
+region_filter_clip_enabled = true
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-317, -196, -184, -228, 199, -217, 306, -177, 392, -109, 446, -22, 472, 32, 461, 84, 462, 84, 422, 103, 356, 184, 258, 225, 18, 231, 23, 216, -49, 194, -175, 220, -307, 213, -302, 161, -256, 109, -202, 98, -283, 78, -379, 162, -438, 178, -462, 166, -479, 111, -432, 16, -480, -81, -470, -121, -418, -138)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_jeqwj")
+animation = &"color"
+frame_progress = 0.315071

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dijqjyqny2pbu"]
+
+[ext_resource type="PackedScene" uid="uid://b6ld0787lrlkp" path="res://creature.tscn" id="1_28oe5"]
+[ext_resource type="Texture2D" uid="uid://chc68yit2il47" path="res://art/swell_shark.png" id="2_qiagk"]
+
+[node name="Swell Shark" instance=ExtResource("1_28oe5")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_qiagk")
+region_enabled = true
+region_rect = Rect2(95, 532, 1174, 298)
+region_filter_clip_enabled = true
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-595, -130, -512, -22, -436, 3, -426, 41, -290, 75, -306, 30, -124, 72, -47, 73, 14, 123, 106, 82, 310, 91, 458, 148, 583, 44, 579, 19, 549, 6, 411, 46, 314, 38, 333, 24, 286, 0, 221, 12, 127, -18, 159, -40, 155, -87, 128, -91, 35, -67, -112, -116, -215, -137, -399, -145, -508, -130)

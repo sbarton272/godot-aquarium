@@ -1,6 +1,6 @@
 extends TankEntity
 
-var fish_name: String
+@export var fish_name: String
 var cost: int
 var food_upkeep: int
 var entertainment: int

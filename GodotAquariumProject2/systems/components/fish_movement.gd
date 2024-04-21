@@ -28,6 +28,8 @@ func _process(delta):
 	
 	var neighbor_bodies: Array[Node2D] = neighbor_detector.get_overlapping_bodies()
 	
+	neighbor_bodies = neighbor_bodies.filter(func(body): "fish_name" in body and body.fish_name == get_parent().fish_name)
+	
 	if neighbor_bodies.size() > 1:
 		
 		var neighbor_vel_total_x: float
@@ -41,8 +43,8 @@ func _process(delta):
 					velocity += separation_direction * neighbor_separation_weight * delta
 				
 				#get nearby neighbors' total velocities
-				neighbor_vel_total_x += body.get_parent().get_node("FishMovementComponent").velocity.x
-				neighbor_vel_total_y += body.get_parent().get_node("FishMovementComponent").velocity.y
+				neighbor_vel_total_x += body.get_node("FishMovementComponent").velocity.x
+				neighbor_vel_total_y += body.get_node("FishMovementComponent").velocity.y
 		
 		#use nearby neighbors total velocities to get an average velocity
 		var neighbor_vel_avg_x: float = neighbor_vel_total_x/(neighbor_bodies.size()-1)

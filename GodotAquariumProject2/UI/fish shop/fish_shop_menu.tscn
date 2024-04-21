@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://entities/garibaldi.tscn" id="3_c50vc"]
 [ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="3_mc6b6"]
 [ext_resource type="Texture2D" uid="uid://boc772q84n5rd" path="res://graphics/spencer_purple_fish_1.png" id="5_7mfwe"]
-[ext_resource type="PackedScene" uid="uid://cgx5id6vvmk4d" path="res://entities/pgaribaldi.tscn" id="6_t5lvs"]
+[ext_resource type="PackedScene" uid="uid://d1ojpx5japmvc" path="res://entities/purplegariinherited.tscn" id="6_gr45f"]
 
 [node name="FishShopMenu" type="Control"]
 layout_mode = 3
@@ -83,7 +83,7 @@ Sociability: 3"
 icon = ExtResource("5_7mfwe")
 my_entity_name = "Purple Gari"
 my_entity_entertainment = 10
-my_entity_scene = ExtResource("6_t5lvs")
+my_entity_scene = ExtResource("6_gr45f")
 my_entity_cost = 30
 my_entity_upkeep = 6
 

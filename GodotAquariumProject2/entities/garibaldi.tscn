@@ -10,8 +10,13 @@
 radius = 12.0
 height = 52.0
 
-[node name="Garibaldi" type="Node2D"]
+[node name="Garabaldi" type="StaticBody2D"]
 script = ExtResource("1_rbaxe")
+fish_name = "Garibaldi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnwrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
@@ -22,18 +27,12 @@ parent_object = NodePath("..")
 parent_sprite = NodePath("../Sprite2D")
 speed = 30.0
 border_check_distance = 30.0
-separation_min_distance = 150.0
+separation_min_distance = 30.0
 neighbor_separation_weight = 5.0
 neighbor_alignment_weight = 2.0
 obstacle_avoidance_weight = 4.0
 neighbor_detector = NodePath("../NeighborDetectorArea")
-my_body = NodePath("../Body")
-
-[node name="Body" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_bnwrp")
+my_body = NodePath("..")
 
 [node name="NeighborDetectorArea" type="Area2D" parent="."]
 

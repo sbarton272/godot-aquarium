@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://systems/game_manager.gd" id="1_o56bf"]
 [ext_resource type="PackedScene" uid="uid://cd0k7hkmtxvc5" path="res://systems/tank.tscn" id="2_8cotb"]
 [ext_resource type="PackedScene" uid="uid://dmblw1r4vut5d" path="res://systems/player/player_manager.tscn" id="3_2bdjo"]
-[ext_resource type="PackedScene" uid="uid://c1xxu764b5f64" path="res://UI/info_panel.tscn" id="5_rs0p0"]
+[ext_resource type="PackedScene" path="res://UI/info_panel.tscn" id="5_rs0p0"]
 [ext_resource type="PackedScene" uid="uid://cgjajiwn3tl3l" path="res://UI/supplies shop/supplies_shop_menu.tscn" id="6_bjiqq"]
 
 [node name="GameManager" type="Node" node_paths=PackedStringArray("tank_manager")]

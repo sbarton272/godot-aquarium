@@ -29,6 +29,7 @@ game_manager = NodePath("../..")
 [node name="InfoPanel" parent="CanvasLayer" instance=ExtResource("5_rs0p0")]
 
 [node name="SuppliesShopMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("6_bjiqq")]
+process_mode = 2
 visible = false
 game_manager = NodePath("../..")
 

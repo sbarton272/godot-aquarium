@@ -26,24 +26,32 @@ texture = ExtResource("1_iavpn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TankBoundaries"]
 position = Vector2(3, 412)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/StaticBody2D"]
 shape = SubResource("RectangleShape2D_jplwo")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="TankBoundaries"]
 position = Vector2(2, -413)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_jplwo")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="TankBoundaries"]
 position = Vector2(-619, -10)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_hv2hg")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="TankBoundaries"]
 position = Vector2(619, -5)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TankBoundaries/StaticBody2D3"]
 shape = SubResource("RectangleShape2D_hv2hg")

@@ -36,7 +36,7 @@ func _process(delta):
 		for body in neighbor_bodies:
 			if not body == my_body:
 				#separate from any nearby neighbors
-				if global_position.distance_to(body.global_position) < 30:
+				if global_position.distance_to(body.global_position) < separation_min_distance:
 					var separation_direction: Vector2 = global_position - body.global_position
 					velocity += separation_direction * neighbor_separation_weight * delta
 				

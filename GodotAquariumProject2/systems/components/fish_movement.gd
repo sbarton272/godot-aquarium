@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var parent_object: Node2D
+@export var parent_sprite: Sprite2D
 
 @export var speed: float
 @export var border_check_distance: float
@@ -24,8 +25,6 @@ func _ready():
 	velocity = Vector2.RIGHT.rotated(randf_range(0, 2 * PI)) * speed
 
 func _process(delta):
-	parent_object.position += velocity * delta
-	parent_object.rotation = velocity.angle()
 	
 	var neighbor_bodies: Array[Node2D] = neighbor_detector.get_overlapping_bodies()
 	
@@ -60,6 +59,8 @@ func _process(delta):
 	
 	
 	#avoid tank borders - this should be updated to use raycasts to check for collisions with obstacles, so fish can avoid rocks, etc. too
+	#randomly choosing an avoidance direction leads to stuttering at the obstacle. the choice should persist
+	#one way to make the choice persist would be to make obstacle avoidance a separate movement state
 	
 	var current_dir: Vector2 = velocity.normalized()
 	
@@ -86,6 +87,13 @@ func _process(delta):
 			velocity = velocity.normalized() + (current_dir.rotated((check_rotation * 4 * PI / 3)) * obstacle_avoidance_weight * delta)
 			velocity *= speed
 	
+	parent_object.position += velocity * delta
+	parent_object.rotation = velocity.angle()
+	
+	if parent_object.rotation > (PI / 2) or parent_object.rotation < (-PI / 2):
+		parent_sprite.flip_v = true
+	else:
+		parent_sprite.flip_v = false
 	
 	#lock position to within tank
 	if global_position.x > max_x:

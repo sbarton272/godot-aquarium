@@ -1,18 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc1hvnhrprn25"]
+[gd_scene load_steps=3 format=3 uid="uid://cgjajiwn3tl3l"]
 
-[ext_resource type="Script" path="res://UI/shop_menu.gd" id="1_dlle5"]
-[ext_resource type="PackedScene" uid="uid://cprqna4hm6grl" path="res://UI/shop_button.tscn" id="2_d4wpi"]
-[ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://entities/garibaldi.tscn" id="3_c50vc"]
-[ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="3_mc6b6"]
+[ext_resource type="Script" path="res://UI/supplies shop/supplies_shop_menu.gd" id="1_qg0uu"]
+[ext_resource type="Script" path="res://UI/supplies shop/supplies_shop_button.gd" id="2_ug6nm"]
 
-[node name="ShopMenu" type="Control"]
+[node name="SuppliesShopMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_dlle5")
+script = ExtResource("1_qg0uu")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -34,7 +32,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "Fish Shop"
+text = "Supplies Shop"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
@@ -44,9 +42,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.5
+offset_left = -264.0
 offset_top = -91.5
-offset_right = 144.5
+offset_right = 264.0
 offset_bottom = 91.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -62,12 +60,13 @@ layout_mode = 2
 layout_mode = 2
 columns = 3
 
-[node name="GaribaldiButton" parent="Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_d4wpi")]
+[node name="SubstrateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-icon = ExtResource("3_mc6b6")
-my_entity_name = "Garibaldi"
-my_entity_entertainment = 5
-my_entity_scene = ExtResource("3_c50vc")
-my_entity_cost = 30
+text = "Buy Substrate x5
+$3"
+script = ExtResource("2_ug6nm")
+quantity = 5
+cost = 3
 
-[connection signal="shop_item_purchased" from="Panel/MarginContainer/VBoxContainer/GridContainer/GaribaldiButton" to="." method="_on_shop_button_shop_item_purchased"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" to="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" method="_on_pressed"]
+[connection signal="supplies_shop_button_pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" to="." method="_on_shop_button_shop_item_purchased"]

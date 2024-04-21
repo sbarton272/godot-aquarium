@@ -7,17 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://c1xxu764b5f64" path="res://UI/info_panel.tscn" id="5_rs0p0"]
 [ext_resource type="PackedScene" uid="uid://cgjajiwn3tl3l" path="res://UI/supplies shop/supplies_shop_menu.tscn" id="6_bjiqq"]
 
-[node name="GameManager" type="Node" node_paths=PackedStringArray("tank_manager")]
+[node name="GameManager" type="Node" node_paths=PackedStringArray("tank")]
 process_mode = 3
 script = ExtResource("1_o56bf")
-tank_manager = NodePath("Tank")
+tank = NodePath("Tank")
 
 [node name="Tank" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("2_8cotb")]
 game_manager = NodePath("..")
 
-[node name="PlayerManager" parent="." node_paths=PackedStringArray("tank_manager") instance=ExtResource("3_2bdjo")]
+[node name="PlayerManager" parent="." node_paths=PackedStringArray("tank") instance=ExtResource("3_2bdjo")]
 process_mode = 1
-tank_manager = NodePath("../Tank")
+tank = NodePath("../Tank")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

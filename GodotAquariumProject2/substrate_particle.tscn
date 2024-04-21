@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbyc6iw8n6tep"]
+
+[ext_resource type="Texture2D" uid="uid://b2hxqnja5fnby" path="res://graphics/5x5 White.png" id="1_c1dhw"]
+[ext_resource type="PhysicsMaterial" uid="uid://3xkqqrspxgqo" path="res://substrate_physics_material.tres" id="1_e073o"]
+[ext_resource type="Script" path="res://substrate_particle.gd" id="1_k2psu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr1x4"]
+
+[node name="SubstrateParticle" type="RigidBody2D" node_paths=PackedStringArray("my_sprite")]
+input_pickable = true
+physics_material_override = ExtResource("1_e073o")
+linear_damp = 2.0
+angular_damp = 5.0
+script = ExtResource("1_k2psu")
+my_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_c1dhw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qr1x4")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

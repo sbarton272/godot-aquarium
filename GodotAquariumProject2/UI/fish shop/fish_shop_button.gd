@@ -8,6 +8,7 @@ var entity_data: EntityData
 @export var my_entity_entertainment: int
 @export var my_entity_scene: PackedScene
 @export var my_entity_cost: int
+@export var my_entity_upkeep: int
 
 func _ready():
 	var new_data: EntityData = EntityData.new()
@@ -15,6 +16,7 @@ func _ready():
 	new_data.entertainment = my_entity_entertainment
 	new_data.entity_scene = my_entity_scene
 	new_data.cost = my_entity_cost
+	new_data.food_upkeep = my_entity_upkeep
 	add_child(new_data)
 	entity_data = new_data
 

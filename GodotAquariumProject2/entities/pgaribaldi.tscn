@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgx5id6vvmk4d"]
+
+[ext_resource type="Script" path="res://entities/pgaribaldi.gd" id="1_3ku0e"]
+[ext_resource type="Texture2D" uid="uid://boc772q84n5rd" path="res://graphics/spencer_purple_fish_1.png" id="2_74ocn"]
+[ext_resource type="PackedScene" uid="uid://dyakkhcilpai2" path="res://systems/components/fish_movement_component.tscn" id="3_mai6e"]
+[ext_resource type="PackedScene" uid="uid://c7cjgn30ipkn7" path="res://systems/components/sprite_randomizer_component.tscn" id="4_8ke18"]
+[ext_resource type="PackedScene" uid="uid://yxh4b1bgkebj" path="res://systems/components/bubble_trail_component.tscn" id="5_30lvh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnwrp"]
+radius = 12.0
+height = 52.0
+
+[node name="PurpleGaribaldi" type="Node2D"]
+script = ExtResource("1_3ku0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_74ocn")
+
+[node name="FishMovementComponent" parent="." node_paths=PackedStringArray("parent_object", "parent_sprite", "neighbor_detector", "my_body") instance=ExtResource("3_mai6e")]
+parent_object = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+speed = 45.0
+border_check_distance = 45.0
+separation_min_distance = 10.0
+neighbor_separation_weight = 2.0
+neighbor_alignment_weight = 4.0
+obstacle_avoidance_weight = 4.0
+neighbor_detector = NodePath("../NeighborDetectorArea")
+my_body = NodePath("../Body")
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnwrp")
+
+[node name="NeighborDetectorArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NeighborDetectorArea"]
+polygon = PackedVector2Array(-47, -30, -2, -56, 49, -43, 65, -1, 40, 48, -4, 59, -42, 21, -16, 2)
+
+[node name="SpriteRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite") instance=ExtResource("4_8ke18")]
+scale_min = 0.02
+scale_max = 0.04
+target_sprite = NodePath("../Sprite2D")
+
+[node name="BubbleTrail" parent="." instance=ExtResource("5_30lvh")]
+position = Vector2(-19, 0)

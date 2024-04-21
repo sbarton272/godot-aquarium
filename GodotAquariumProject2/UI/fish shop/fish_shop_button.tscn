@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cprqna4hm6grl"]
 
-[ext_resource type="Script" path="res://UI/shop_button.gd" id="2_3oepx"]
+[ext_resource type="Script" path="res://UI/fish shop/fish_shop_button.gd" id="1_e0ykl"]
 
-[node name="ShopButton" type="Button"]
+[node name="FishShopButton" type="Button"]
 theme_override_constants/icon_max_width = 120
 text = "Garibaldi
 Buy: $10
@@ -10,6 +10,6 @@ Feed: $3
 Revenue: $5
 Sociability: 1"
 alignment = 0
-script = ExtResource("2_3oepx")
+script = ExtResource("1_e0ykl")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

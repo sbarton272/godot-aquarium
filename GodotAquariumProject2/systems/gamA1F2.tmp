@@ -15,9 +15,9 @@ tank_manager = NodePath("Tank")
 [node name="Tank" parent="." node_paths=PackedStringArray("game_manager") instance=ExtResource("2_8cotb")]
 game_manager = NodePath("..")
 
-[node name="PlayerManager" parent="." node_paths=PackedStringArray("tank_manager") instance=ExtResource("3_2bdjo")]
+[node name="PlayerManager" parent="." node_paths=PackedStringArray("tank") instance=ExtResource("3_2bdjo")]
 process_mode = 1
-tank_manager = NodePath("../Tank")
+tank = NodePath("../Tank")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

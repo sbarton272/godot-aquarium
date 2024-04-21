@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dyakkhcilpai2"]
 
-[ext_resource type="Script" path="res://fish_movement.gd" id="1_7vfc5"]
+[ext_resource type="Script" path="res://systems/components/fish_movement.gd" id="1_toym1"]
 
 [node name="FishMovementComponent" type="Node2D"]
-script = ExtResource("1_7vfc5")
+script = ExtResource("1_toym1")

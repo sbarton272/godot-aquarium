@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6q2t0vt8u1e6"]
+
+[ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://entities/generics/generic_fish.tscn" id="1_gk7xn"]
+[ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="2_hgdsx"]
+[ext_resource type="Texture2D" uid="uid://ch04lr1edwa5t" path="res://graphics/garibaldi_scaled.png" id="3_1md64"]
+
+[node name="Garibaldi" instance=ExtResource("1_gk7xn")]
+food_upkeep = 3
+entertainment = 5
+sociability = 1
+entity_name = "Garibaldi"
+entity_texture = ExtResource("2_hgdsx")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_1md64")
+
+[node name="FishMovementComponent" parent="." index="2"]
+speed = 30.0
+border_check_distance = 100.0
+separation_min_distance = 50.0
+neighbor_separation_weight = 3.0
+neighbor_alignment_weight = 4.0
+obstacle_avoidance_weight = 5.0
+
+[node name="SpriteRandomizerComponent" parent="." index="4"]
+scale_min = 0.9
+scale_max = 1.0

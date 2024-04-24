@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd0k7hkmtxvc5"]
+[gd_scene load_steps=7 format=3 uid="uid://cd0k7hkmtxvc5"]
 
 [ext_resource type="Texture2D" uid="uid://kyddae7gjmc0" path="res://graphics/tank.png" id="1_iavpn"]
 [ext_resource type="Script" path="res://systems/tank_manager.gd" id="1_v6e4k"]
-[ext_resource type="PackedScene" path="res://substrate_particle.tscn" id="3_ug6u8"]
+[ext_resource type="PackedScene" uid="uid://cbyc6iw8n6tep" path="res://substrate/substrate_particle.tscn" id="3_ug6u8"]
+[ext_resource type="PackedScene" uid="uid://dwqna53a4scoo" path="res://water.tscn" id="4_82w3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jplwo"]
 size = Vector2(1682, 20)
@@ -10,7 +11,7 @@ size = Vector2(1682, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv2hg"]
 size = Vector2(40, 1333)
 
-[node name="Tank" type="Node2D"]
+[node name="TankManager" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_v6e4k")
 substrate_particle_scene = ExtResource("3_ug6u8")
@@ -27,7 +28,7 @@ texture = ExtResource("1_iavpn")
 [node name="TankBoundaries" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TankBoundaries"]
-position = Vector2(3, 412)
+position = Vector2(2, 408)
 collision_layer = 2
 collision_mask = 2
 
@@ -59,3 +60,10 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_hv2hg")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Water" parent="." node_paths=PackedStringArray("tank_background_sprite", "tank_manager") instance=ExtResource("4_82w3y")]
+tank_background_sprite = NodePath("../TankBackground")
+tank_manager = NodePath("..")
+y_variation = 100.0
+
+[connection signal="water_level_changed" from="." to="Water" method="draw_water_polygon"]

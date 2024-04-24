@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc1hvnhrprn25"]
+[gd_scene load_steps=6 format=3 uid="uid://cc1hvnhrprn25"]
 
 [ext_resource type="Script" path="res://UI/fish shop/fish_shop_menu.gd" id="1_dlle5"]
+[ext_resource type="PackedScene" uid="uid://cprqna4hm6grl" path="res://UI/fish shop/fish_shop_button.tscn" id="2_d4wpi"]
+[ext_resource type="Texture2D" uid="uid://76hr11l4wukt" path="res://graphics/spencer_orange_fish_2.png" id="3_upvd2"]
+[ext_resource type="PackedScene" uid="uid://d1ojpx5japmvc" path="res://entities/purplegari.tscn" id="4_bonmq"]
+[ext_resource type="Texture2D" uid="uid://boc772q84n5rd" path="res://graphics/spencer_purple_fish_1.png" id="4_mgmx5"]
 
 [node name="FishShopMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dlle5")
-fish_types = Array[String](["Garibaldi", "Purplegari", "Kelp"])
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -59,3 +62,17 @@ layout_mode = 2
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 3
+
+[node name="GarabaldiButton" parent="Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_d4wpi")]
+layout_mode = 2
+text = "Garibaldi
+$10"
+icon = ExtResource("3_upvd2")
+
+[node name="PurpleGariButton" parent="Panel/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_d4wpi")]
+layout_mode = 2
+text = "Purple Gari
+$15"
+icon = ExtResource("4_mgmx5")
+my_entity_scene = ExtResource("4_bonmq")
+cost = 15

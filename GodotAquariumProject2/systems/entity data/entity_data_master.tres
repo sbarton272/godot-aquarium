@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="EntityData" load_steps=2 format=3 uid="uid://dujn08mrpbn8x"]
+
+[ext_resource type="Script" path="res://systems/entity data/entity_data.gd" id="1_k2tjg"]
+
+[resource]
+script = ExtResource("1_k2tjg")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://r2mpljghymqd"]
+
+[ext_resource type="Texture2D" uid="uid://b2hxqnja5fnby" path="res://graphics/5x5 White.png" id="1_63m40"]
+[ext_resource type="Script" path="res://water_particle.gd" id="1_yu8i0"]
+[ext_resource type="PackedScene" uid="uid://c7cjgn30ipkn7" path="res://systems/components/sprite_randomizer_component.tscn" id="3_jjvt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbsn1"]
+size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_fub3n"]
+colors = PackedColorArray(0.278431, 0.482353, 1, 0.580392, 1, 1, 1, 0)
+
+[node name="WaterParticle" type="Node2D"]
+script = ExtResource("1_yu8i0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.368627, 0.721569, 1)
+position = Vector2(6.85453e-07, 2.98023e-08)
+scale = Vector2(3.2, 3.2)
+texture = ExtResource("1_63m40")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mbsn1")
+
+[node name="SpriteRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite") instance=ExtResource("3_jjvt0")]
+scale_min = 3.0
+scale_max = 6.0
+target_sprite = NodePath("../Sprite2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -8)
+emitting = false
+amount = 30
+lifetime = 0.4
+one_shot = true
+lifetime_randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 300)
+initial_velocity_min = 200.0
+initial_velocity_max = 270.0
+damping_max = 20.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_fub3n")
+
+[connection signal="finished" from="CPUParticles2D" to="." method="die"]

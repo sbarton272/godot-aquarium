@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs5wdjyyuexb2"]
+
+[ext_resource type="Script" path="res://UI/inventory/inventory_button.gd" id="1_u6von"]
+
+[node name="InventoryButton" type="Button"]
+theme_override_constants/icon_max_width = 40
+text = "Entity"
+script = ExtResource("1_u6von")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://o7iwbadk3sec"]
+
+[ext_resource type="Script" path="res://entities/entity scenes/test_tree.gd" id="1_bcwpn"]
+[ext_resource type="Texture2D" uid="uid://48r7hmv2cvwy" path="res://graphics/kelp_2_frames_scaled.png" id="2_b2ias"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ck3yx"]
+height = 38.0
+
+[node name="TestTree" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+lock_rotation = true
+linear_damp = 4.0
+angular_damp = 20.0
+script = ExtResource("1_bcwpn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -72)
+texture = ExtResource("2_b2ias")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ck3yx")

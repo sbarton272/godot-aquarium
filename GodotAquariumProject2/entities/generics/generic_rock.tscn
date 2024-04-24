@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0rkmv38nhd0n"]
+
+[ext_resource type="Texture2D" uid="uid://dhipojwxcyp2g" path="res://graphics/rock1.png" id="1_cwcxn"]
+[ext_resource type="Script" path="res://entities/generics/generic_rock.gd" id="1_qnjkk"]
+[ext_resource type="PackedScene" uid="uid://c7cjgn30ipkn7" path="res://systems/components/sprite_randomizer_component.tscn" id="2_257o2"]
+
+[node name="GenericRock" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_qnjkk")
+entity_name = "Rock"
+entity_texture = ExtResource("1_cwcxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cwcxn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(141, -147, 185, -115, 219, -49, 206, 57, 148, 98, 153, 157, 121, 204, 8, 230, -42, 237, -111, 219, -177, 196, -216, 156, -220, 104, -208, 74, -216, 34, -182, -57, -176, -90, -188, -124, -182, -175, -121, -228, -8, -224, 94, -202, 138, -173)
+
+[node name="SpriteRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite", "target_collider") instance=ExtResource("2_257o2")]
+scale_min = 0.3
+scale_max = 0.33
+target_sprite = NodePath("../Sprite2D")
+scales_collider = true
+target_collider = NodePath("../CollisionPolygon2D")

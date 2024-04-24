@@ -4,11 +4,7 @@
 
 [node name="FishShopButton" type="Button"]
 theme_override_constants/icon_max_width = 120
-text = "Garibaldi
-Buy: $10
-Feed: $3
-Revenue: $5
-Sociability: 1"
+text = "Text"
 alignment = 0
 script = ExtResource("1_e0ykl")
 

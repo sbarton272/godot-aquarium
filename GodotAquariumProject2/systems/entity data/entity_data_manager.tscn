@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo7n383ao7ben"]
+
+[ext_resource type="Script" path="res://systems/entity data/entity_data_manager.gd" id="1_t8tb2"]
+[ext_resource type="Resource" uid="uid://dujn08mrpbn8x" path="res://systems/entity data/entity_data_master.tres" id="2_vud7m"]
+
+[node name="EntityDataManager" type="Node2D"]
+script = ExtResource("1_t8tb2")
+entity_data_master_resource = ExtResource("2_vud7m")

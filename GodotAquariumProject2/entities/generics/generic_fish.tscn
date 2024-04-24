@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdr61i0mbppru"]
+
+[ext_resource type="Script" path="res://entities/generics/generic_fish.gd" id="1_dafcs"]
+[ext_resource type="PackedScene" uid="uid://dyakkhcilpai2" path="res://systems/components/fish_movement_component.tscn" id="2_be4wg"]
+[ext_resource type="PackedScene" uid="uid://c7cjgn30ipkn7" path="res://systems/components/sprite_randomizer_component.tscn" id="3_1uluq"]
+[ext_resource type="PackedScene" uid="uid://yxh4b1bgkebj" path="res://systems/components/bubble_trail_component.tscn" id="4_v2x00"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bnwrp"]
+radius = 12.0
+height = 52.0
+
+[node name="GenericFish" type="RigidBody2D"]
+input_pickable = true
+script = ExtResource("1_dafcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bnwrp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+
+[node name="FishMovementComponent" parent="." node_paths=PackedStringArray("parent_object", "parent_sprite", "neighbor_detector") instance=ExtResource("2_be4wg")]
+parent_object = NodePath("..")
+parent_sprite = NodePath("../Sprite2D")
+neighbor_detector = NodePath("../NeighborDetectorArea")
+
+[node name="NeighborDetectorArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NeighborDetectorArea"]
+polygon = PackedVector2Array(-47, -30, -2, -56, 49, -43, 65, -1, 40, 48, -4, 59, -42, 21, -16, 2)
+
+[node name="SpriteRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite") instance=ExtResource("3_1uluq")]
+scale_min = 0.03
+scale_max = 0.06
+target_sprite = NodePath("../Sprite2D")
+
+[node name="BubbleTrail" parent="." instance=ExtResource("4_v2x00")]
+position = Vector2(-20, 0)

@@ -22,8 +22,9 @@ var water_level: float:
 	get:
 		return water_level
 	set(value): 
+		var level_diff: float = value-water_level
 		water_level = value
-		emit_signal("water_level_changed",value)
+		emit_signal("water_level_changed",level_diff)
 
 var hose: Node2D
 

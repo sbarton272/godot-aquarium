@@ -32,8 +32,8 @@ func _process(delta):
 	
 	if neighbor_bodies.size() > 1:
 		
-		var neighbor_vel_total_x: float
-		var neighbor_vel_total_y: float
+		var neighbor_vel_total_x: float = 0
+		var neighbor_vel_total_y: float = 0
 		
 		for neighbor in neighbor_bodies:
 			if not neighbor == my_body:

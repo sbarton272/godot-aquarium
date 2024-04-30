@@ -8,7 +8,7 @@ func _ready():
 	var sprite: Sprite2D = $Sprite2D
 	sprite.texture = entity_data.texture
 
-func _process(delta):
+func _process(_delta):
 	global_position = get_global_mouse_position()
 
 func _input(event: InputEvent):

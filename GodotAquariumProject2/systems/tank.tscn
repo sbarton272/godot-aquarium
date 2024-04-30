@@ -64,6 +64,6 @@ shape = SubResource("RectangleShape2D_hv2hg")
 [node name="Water" parent="." node_paths=PackedStringArray("tank_background_sprite", "tank_manager") instance=ExtResource("4_82w3y")]
 tank_background_sprite = NodePath("../TankBackground")
 tank_manager = NodePath("..")
-y_variation = 100.0
+y_variation = 40.0
 
 [connection signal="water_level_changed" from="." to="Water" method="draw_water_polygon"]

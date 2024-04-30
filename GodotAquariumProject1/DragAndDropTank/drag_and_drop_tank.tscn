@@ -23,12 +23,14 @@ size = Vector2(25, 832)
 [node name="DragAndDropTank" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
 
 [node name="TankBackground" type="Sprite2D" parent="."]
 position = Vector2(600, 401)
 texture = ExtResource("1_lywwj")
 
 [node name="SubstrateCreator" parent="." instance=ExtResource("13_d3by5")]
+process_mode = 4
 position = Vector2(-4.64844, -0.984375)
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -25,4 +25,4 @@ func _on_shop_button_shop_item_purchased(supplies: Supplies, quantity: int, cost
 	if PlayerData.player_money >= cost:
 		if supplies == Supplies.SUBSTRATE:
 			PlayerData.player_substrate += quantity
-	PlayerData.player_money -= cost
+		PlayerData.player_money -= cost

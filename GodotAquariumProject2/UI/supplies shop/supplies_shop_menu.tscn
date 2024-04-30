@@ -62,11 +62,11 @@ columns = 3
 
 [node name="SubstrateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "Buy Substrate x5
-$3"
+text = "Buy Substrate x30
+$50"
 script = ExtResource("2_ug6nm")
-quantity = 5
-cost = 3
+quantity = 30
+cost = 50
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" to="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" method="_on_pressed"]
 [connection signal="supplies_shop_button_pressed" from="Panel/MarginContainer/VBoxContainer/GridContainer/SubstrateButton" to="." method="_on_shop_button_shop_item_purchased"]

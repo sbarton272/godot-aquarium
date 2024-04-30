@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxasa3gwvi8d2"]
+
+[ext_resource type="Script" path="res://entities/generics/generic_entity.gd" id="1_a24gv"]
+
+[node name="GenericEntity" type="RigidBody2D"]
+script = ExtResource("1_a24gv")

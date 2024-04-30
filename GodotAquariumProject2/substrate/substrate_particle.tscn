@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbyc6iw8n6tep"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://3xkqqrspxgqo" path="res://substrate/substrate_physics_material.tres" id="1_u71pi"]
+[ext_resource type="Script" path="res://substrate/substrate_particle.gd" id="2_83jqp"]
+[ext_resource type="Texture2D" uid="uid://b2hxqnja5fnby" path="res://graphics/5x5 White.png" id="3_wgxxc"]
+[ext_resource type="Texture2D" uid="uid://cj303u0068lxq" path="res://graphics/substrate/substrate_25_percent.png" id="4_a5e6i"]
+[ext_resource type="Texture2D" uid="uid://b1rcqm5yerth1" path="res://graphics/substrate/substrate_50_percent.png" id="5_xcnxb"]
+[ext_resource type="Texture2D" uid="uid://d3jhby052gr4v" path="res://graphics/substrate/substrate_75_percent.png" id="6_js05o"]
+[ext_resource type="Texture2D" uid="uid://cbm7wvj2mf5h7" path="res://graphics/substrate/substrate_100_percent.png" id="7_hxkln"]
+[ext_resource type="PackedScene" uid="uid://c7cjgn30ipkn7" path="res://systems/components/sprite_randomizer_component.tscn" id="8_oaq8y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr1x4"]
+radius = 2.0
+
+[node name="SubstrateParticle" type="RigidBody2D" node_paths=PackedStringArray("my_sprite")]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+physics_material_override = ExtResource("1_u71pi")
+linear_damp = 2.0
+angular_damp = 5.0
+script = ExtResource("2_83jqp")
+my_sprite = NodePath("Sprite2D")
+textures = Array[CompressedTexture2D]([ExtResource("3_wgxxc"), ExtResource("4_a5e6i"), ExtResource("5_xcnxb"), ExtResource("6_js05o"), ExtResource("7_hxkln")])
+bacteria_grow_time = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_wgxxc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qr1x4")
+
+[node name="SpriteRandomizerComponent" parent="." node_paths=PackedStringArray("target_sprite", "target_collider") instance=ExtResource("8_oaq8y")]
+scale = Vector2(5, 5)
+scale_min = 4.0
+scale_max = 6.0
+target_sprite = NodePath("../Sprite2D")
+scales_collider = true
+target_collider = NodePath("../CollisionShape2D")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

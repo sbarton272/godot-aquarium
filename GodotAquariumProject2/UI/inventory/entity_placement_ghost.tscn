@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbjkaguaackdw"]
+
+[ext_resource type="Script" path="res://UI/inventory/entity_placement_ghost.gd" id="1_mwydr"]
+
+[node name="EntityPlacementGhost" type="Node2D"]
+script = ExtResource("1_mwydr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)

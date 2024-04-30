@@ -1,26 +1,19 @@
 extends Button
 
-signal shop_item_purchased
+signal shop_item_purchased(entity_data: EntityData)
 
 var entity_data: EntityData
 
-@export var my_entity_name: String
-@export var my_entity_entertainment: int
-@export var my_entity_scene: PackedScene
-@export var my_entity_cost: int
-@export var my_entity_upkeep: int
+var my_entity_scene: PackedScene
+var cost: int
 
 func _ready():
-	var new_data: EntityData = EntityData.new()
-	new_data.entity_name = my_entity_name
-	new_data.entertainment = my_entity_entertainment
-	new_data.entity_scene = my_entity_scene
-	new_data.cost = my_entity_cost
-	new_data.food_upkeep = my_entity_upkeep
-	add_child(new_data)
-	entity_data = new_data
+	icon = entity_data.icon_texture
+	text = entity_data.display_name #and tooltip and cost
+	my_entity_scene = entity_data.scene
+	cost = entity_data.cost
 
 func _on_button_up():
-	if PlayerData.player_money >= my_entity_cost:
-		PlayerData.player_money -= my_entity_cost
+	if PlayerData.player_money >= cost:
+		PlayerData.player_money -= cost
 		emit_signal("shop_item_purchased",entity_data)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ojpx5japmvc"]
+
+[ext_resource type="PackedScene" uid="uid://bdr61i0mbppru" path="res://entities/generics/generic_fish.tscn" id="1_cpw8o"]
+[ext_resource type="Texture2D" uid="uid://boc772q84n5rd" path="res://graphics/spencer_purple_fish_1.png" id="2_rcxbu"]
+
+[node name="PurpleGari" instance=ExtResource("1_cpw8o")]
+food_upkeep = 15
+entertainment = 5
+sociability = 5
+entity_name = "Purple Gari"
+entity_texture = ExtResource("2_rcxbu")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_rcxbu")
+
+[node name="FishMovementComponent" parent="." index="2"]
+speed = 45.0
+border_check_distance = 45.0
+separation_min_distance = 25.0
+neighbor_separation_weight = 2.0
+neighbor_alignment_weight = 4.0
+obstacle_avoidance_weight = 4.0

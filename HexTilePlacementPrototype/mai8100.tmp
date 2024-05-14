@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://50w8db3qtuuk"]
+
+[ext_resource type="Texture2D" uid="uid://l65kvm3mjpyg" path="res://WhiteHex.png" id="1_cm64e"]
+[ext_resource type="Script" path="res://tilemap_controller.gd" id="2_8e1tw"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="3_d2q5u"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpx7o"]
+texture = ExtResource("1_cm64e")
+texture_region_size = Vector2i(180, 156)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sa710"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(180, 156)
+sources/0 = SubResource("TileSetAtlasSource_wpx7o")
+
+[node name="MainScene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+self_modulate = Color(0.231373, 0.392157, 0.682353, 1)
+tile_set = SubResource("TileSet_sa710")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 65538, 0, 0, 65539, 0, 0, 131076, 0, 0, 131077, 0, 0, 196614, 0, 0, 196615, 0, 0)
+script = ExtResource("2_8e1tw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(584, 323)
+script = ExtResource("3_d2q5u")
+
+[connection signal="zoom_changed" from="Camera2D" to="TileMap" method="_on_camera_2d_zoom_changed"]

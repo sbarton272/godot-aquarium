@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://50w8db3qtuuk"]
+
+[ext_resource type="Script" path="res://main_scene_manager.gd" id="1_ajhvp"]
+[ext_resource type="Texture2D" uid="uid://l65kvm3mjpyg" path="res://WhiteHex.png" id="1_cm64e"]
+[ext_resource type="Script" path="res://tilemap_controller.gd" id="2_8e1tw"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="3_d2q5u"]
+[ext_resource type="Script" path="res://hover_tile_controller.gd" id="5_tvde1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpx7o"]
+texture = ExtResource("1_cm64e")
+texture_region_size = Vector2i(180, 156)
+0:0/next_alternative_id = 5
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/modulate = Color(1, 0, 0, 1)
+0:0/2 = 2
+0:0/2/modulate = Color(0, 1, 0, 1)
+0:0/3 = 3
+0:0/3/modulate = Color(0, 0, 1, 1)
+
+[sub_resource type="TileSet" id="TileSet_sa710"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(180, 156)
+sources/0 = SubResource("TileSetAtlasSource_wpx7o")
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_ajhvp")
+
+[node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("camera_controller")]
+self_modulate = Color(0.231373, 0.392157, 0.682353, 1)
+tile_set = SubResource("TileSet_sa710")
+format = 2
+script = ExtResource("2_8e1tw")
+camera_controller = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(584, 323)
+script = ExtResource("3_d2q5u")
+
+[node name="HoverTile" type="Node2D" parent="." node_paths=PackedStringArray("tile_map")]
+visible = false
+script = ExtResource("5_tvde1")
+tile_map = NodePath("../TileMap")
+
+[node name="Sprite2D" type="Sprite2D" parent="HoverTile"]
+texture = ExtResource("1_cm64e")
+
+[connection signal="zoom_changed" from="Camera2D" to="TileMap" method="_on_camera_2d_zoom_changed"]
